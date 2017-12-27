@@ -5,10 +5,11 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import "./App.css";
+import "common/assets/fonts/fontawesome-free-5.0.2/svg-with-js/js/fontawesome-all.js";
 
-import FileUpload from "/Users/senecalearning/budget-app/src/features/fileUpload/index.js";
+import FileUpload from "features/fileUpload/index.js";
 
-class App extends Component {
+class App extends Component<null> {
   render() {
     return (
       <Provider store={store}>

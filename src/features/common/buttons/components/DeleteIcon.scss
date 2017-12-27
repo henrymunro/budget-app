@@ -1,0 +1,33 @@
+@import "standard.scss";
+
+$buttonSize: 33px;
+
+.DeleteIcon {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & path {
+    @include standardTranstion;
+    fill: $text-dark;
+  }
+
+  &:hover path {
+    fill: lighten($text-dark, 25%);
+  }
+}
+
+.DeleteIcon.light {
+  & path {
+    fill: $text-light;
+  }
+
+  &:hover path {
+    fill: darken($text-light, 25%);
+  }
+}

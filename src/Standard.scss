@@ -3,6 +3,9 @@
 // colors
 $base-color-scheme: "cyan";
 
+$text-light: white;
+$text-dark: black;
+
 $color-50: material-color($base-color-scheme, "50");
 $color-100: material-color($base-color-scheme, "100");
 $color-200: material-color($base-color-scheme, "200");
@@ -17,3 +20,23 @@ $color-a100: material-color($base-color-scheme, "a100");
 $color-a200: material-color($base-color-scheme, "a200");
 $color-a400: material-color($base-color-scheme, "a400");
 $color-a700: material-color($base-color-scheme, "a700");
+
+// Shadows
+
+@mixin shadowSmall ($color: material-color($base-color-scheme, "500")) {
+  box-shadow: 0 0 1px 0px $color;
+}
+
+@mixin shadowMed ($color: $color-500) {
+  box-shadow: 0 1px 3px 3px $color;
+}
+
+@mixin shadowLarge ($color: $color-500) {
+  box-shadow: 0 2px 12px 6px $color;
+}
+
+// Transitions
+
+@mixin standardTransition ($property: all) {
+  transition: $property 0.3s ease;
+}

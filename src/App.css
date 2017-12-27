@@ -1,28 +1,69 @@
-.App {
-  text-align: center;
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Muli, sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+input {
+  font-family: Muli, sans-serif;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+button {
+  font-family: Muli, sans-serif;
 }
 
-.App-title {
-  font-size: 1.5em;
+textarea {
+  font-family: Muli, sans-serif;
 }
 
-.App-intro {
-  font-size: large;
+p {
+  font-family: Muli, sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+div {
+  font-family: Muli, sans-serif;
+}
+
+span {
+  font-family: Muli, sans-serif;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(./common/assets/fonts/Muli/Muli-Regular.ttf);
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(./common/assets/fonts/Muli/Muli-Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(./common/assets/fonts/Muli/Muli-Italic.ttf);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(./common/assets/fonts/Muli/Muli-BoldItalic.ttf);
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(./common/assets/fonts/Muli/Muli-ExtraLight.ttf);
+  font-weight: 300;
 }

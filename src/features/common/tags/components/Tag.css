@@ -1,0 +1,29 @@
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+.tag {
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  color: white;
+  background: #4dd0e1;
+  max-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.tag:hover {
+  box-shadow: 0 0 1px 0px #00bcd4;
+}
+.tag > span {
+  margin: 0 5px;
+}
