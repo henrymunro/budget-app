@@ -3,7 +3,7 @@
 import { Record } from "immutable";
 
 export type SaveFileEntryType = {
-  date: string | date,
+  date: string | Date,
   description: string,
   amount: number,
   otherDetails: Object

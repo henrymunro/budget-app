@@ -4,19 +4,44 @@ import React from "react";
 import ReactFileReader from "react-file-reader";
 import parse from "csv-parse";
 
+import type { UploadedFileEntryType } from "../models/UploadedFileEntry";
+import type { SaveFileType } from "../models/SaveFile";
+
 import { toCamelCase } from "common/utils";
 import FileUploadTable from "./FileUploadTable";
 
 import "./FileUpload.css";
+import SaveFileEntry from "features/fileUpload/models/SaveFileEntry";
 
-type Props = {};
+type Props = {
+  saveFile: SaveFileType,
+  onFileParse: (Array<UploadedFileEntryType>, File) => void,
+  onFileParseError: string => void
+};
 
 export default class FileUpload extends React.PureComponent<Props> {
-  _handleFiles = files => {
+  _handleFiles = (files: FileList) => {
+    const {
+      name,
+      lastModified,
+      lastModifiedDate,
+      size,
+      type,
+      webkitRelativePath
+    } = files[0];
+
+    // Read and parse file
     if (typeof FileReader !== "undefined") {
       var reader = new FileReader();
       reader.onload = readFile => {
-        this._parseCsv(readFile.target.result);
+        this._parseCsv(readFile.target.result, {
+          name,
+          lastModified,
+          lastModifiedDate,
+          size,
+          type,
+          webkitRelativePath
+        });
       };
 
       reader.readAsText(files[0]);
@@ -25,7 +50,7 @@ export default class FileUpload extends React.PureComponent<Props> {
     }
   };
 
-  _parseCsv = file => {
+  _parseCsv = (file: string, fileDetails: Object) => {
     parse(
       file,
       {
@@ -42,12 +67,12 @@ export default class FileUpload extends React.PureComponent<Props> {
         const updatedParsedFile = parsedFile.map(entry =>
           this._renameKeys(entry)
         );
-        this.props.onFileParse(updatedParsedFile);
+        this.props.onFileParse(updatedParsedFile, fileDetails);
       }
     );
   };
 
-  _renameKeys = obj => {
+  _renameKeys = (obj: Object) => {
     const keyValues = Object.keys(obj).map(key => {
       const newKey = toCamelCase(key);
       return { [newKey]: obj[key] };
@@ -56,14 +81,17 @@ export default class FileUpload extends React.PureComponent<Props> {
   };
 
   render() {
-    const { parsedFile } = this.props;
+    const { saveFile } = this.props;
+    console.log(this.props);
     return (
       <div>
         <ReactFileReader fileTypes={[".csv"]} handleFiles={this._handleFiles}>
           <button className="btn">Upload</button>
         </ReactFileReader>
-        {parsedFile &&
-          parsedFile.length > 0 && <FileUploadTable data={parsedFile} />}
+        {saveFile &&
+          saveFile.content.length > 0 && (
+            <FileUploadTable data={saveFile.content} />
+          )}
       </div>
     );
   }

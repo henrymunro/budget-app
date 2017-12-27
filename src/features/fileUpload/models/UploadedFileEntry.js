@@ -2,7 +2,7 @@
 
 import { Record } from "immutable";
 
-export type FileUploadEntryType = {
+export type UploadedFileEntryType = {
   balance: string,
   date: string | date,
   description: string,
@@ -11,11 +11,11 @@ export type FileUploadEntryType = {
   transactionType: string
 };
 
-export default class FileUploadEntry extends Record({
+export default class UploadedFileEntry extends Record({
   balance: "",
   date: "",
   description: "",
   paidIn: "",
   paidOut: "",
   transactionType: ""
-})<FileUploadEntry> {}
+})<UploadedFileEntryType> {}

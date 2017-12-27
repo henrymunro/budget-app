@@ -5,10 +5,10 @@ export const actionTypes = {
   ERROR_PARSING_FILE: "fileUpload/ERROR_PARSING_FILE"
 };
 
-export function onFileParse(parsedFile: Array<Object>) {
+export function onFileParse(parsedFile: Array<Object>, fileDetails: Object) {
   return {
     type: actionTypes.PARSED_FILE,
-    payload: { parsedFile }
+    payload: { parsedFile, fileDetails }
   };
 }
 

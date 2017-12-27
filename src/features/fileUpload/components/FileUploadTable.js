@@ -2,32 +2,23 @@
 import React from "react";
 import moment from "moment";
 
-import type { FileUploadEntryType } from "../models/FileUploadEntry";
+import type { SaveFileEntryType } from "../models/SaveFileEntry";
 import "./FileUploadTable.css";
 
 type Props = {
-  data: Array<FileUploadEntryType>
+  data: Array<SaveFileEntryType>
 };
 
 export default class FileUploadTable extends React.PureComponent<Props> {
   renderTableRows = () => {
     const { data } = this.props;
-    const mappedRows = data.map(
-      (
-        { balance, date, description, paidIn, paidOut, transactionType },
-        index
-      ) => (
-        <tr key={`file-upload-table-row-${index}`}>
-          <td>{balance}</td>
-          <td>{moment(date).format("YYYY-MM-DD")}</td>
-          <td>{String(description)}</td>
-          <td>{paidIn}</td>
-          <td>{paidOut}</td>
-          <td>{transactionType}</td>
-        </tr>
-      )
-    );
-    console.log({ mappedRows });
+    const mappedRows = data.map(({ date, description, amount }, index) => (
+      <tr key={`file-upload-table-row-${index}`}>
+        <td>{moment(date).format("YYYY-MM-DD")}</td>
+        <td>{description}</td>
+        <td>{amount}</td>
+      </tr>
+    ));
     return mappedRows;
   };
 
@@ -36,12 +27,9 @@ export default class FileUploadTable extends React.PureComponent<Props> {
       <table className="FileUploadTable">
         <thead>
           <tr>
-            <th>Balance</th>
             <th>Date</th>
             <th>Description</th>
-            <th>Paid In</th>
-            <th>Paid Out</th>
-            <th>Transaction Type</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>{this.renderTableRows()}</tbody>

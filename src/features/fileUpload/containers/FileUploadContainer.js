@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { toJS } from "common/utils";
 
-import { getParsedFile, getErrorParsingFile } from "../selectors";
+import { getParsedFile, getSaveFile, getErrorParsingFile } from "../selectors";
 
 import { onFileParse, onFileParseError } from "../actions";
 
@@ -12,14 +12,15 @@ import FileUpload from "../components/FileUpload";
 
 const mapStateToProps = state => {
   return {
-    parsedFile: getParsedFile(state),
+    saveFile: getSaveFile(state),
     errorParsingFile: getErrorParsingFile(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFileParse: parsedFile => dispatch(onFileParse(parsedFile)),
+    onFileParse: (parsedFile, fileDetails) =>
+      dispatch(onFileParse(parsedFile, fileDetails)),
     onFileParseError: error => dispatch(onFileParseError(error))
   };
 };

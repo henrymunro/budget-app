@@ -1,18 +1,20 @@
 // @flow
-import { Record, List } from "immutable";
+import { Record, List, Map } from "immutable";
 
 import SaveFileEntry from "./SaveFileEntry";
 
 export type SaveFileType = {
   content: List<SaveFileEntry>,
   currency: "£" | "$",
-  uploadTime: date,
-  tags: List<string>
+  uploadTime: Date,
+  tags: List<string>,
+  fileDetails: File
 };
 
 export default class SaveFile extends Record({
   content: List([]),
   currency: "£",
   uploadTime: "",
-  tags: List([])
-})<FileUploadType> {}
+  tags: List([]),
+  fileDetails: Map({})
+})<SaveFileType> {}
