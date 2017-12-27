@@ -1,1 +1,19 @@
-$white: white;
+@import "common/styles/material-color-function.scss";
+
+// colors
+$base-color-scheme: "cyan";
+
+$color-50: material-color($base-color-scheme, "50");
+$color-100: material-color($base-color-scheme, "100");
+$color-200: material-color($base-color-scheme, "200");
+$color-300: material-color($base-color-scheme, "300");
+$color-400: material-color($base-color-scheme, "400");
+$color-500: material-color($base-color-scheme, "500");
+$color-600: material-color($base-color-scheme, "600");
+$color-700: material-color($base-color-scheme, "700");
+$color-800: material-color($base-color-scheme, "800");
+$color-900: material-color($base-color-scheme, "900");
+$color-a100: material-color($base-color-scheme, "a100");
+$color-a200: material-color($base-color-scheme, "a200");
+$color-a400: material-color($base-color-scheme, "a400");
+$color-a700: material-color($base-color-scheme, "a700");

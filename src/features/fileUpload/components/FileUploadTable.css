@@ -8,3 +8,16 @@
  * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
  *                                          '200', 'a100')
  */
+.FileUploadTable {
+  width: 100%;
+}
+.FileUploadTable > thead {
+  background: #00bcd4;
+  color: white;
+}
+.FileUploadTable > tbody > tr:nth-child(even) {
+  background: #80deea;
+}
+.FileUploadTable > tbody > tr:nth-child(odd) {
+  background: #b2ebf2;
+}
