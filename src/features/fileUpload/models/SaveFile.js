@@ -6,15 +6,21 @@ import SaveFileEntry from "./SaveFileEntry";
 export type SaveFileType = {
   content: List<SaveFileEntry>,
   currency: "£" | "$",
-  uploadTime: Date,
+  uploadTime?: Date,
   tags: List<string>,
-  fileDetails: File
+  fileName: string,
+  fileType: string,
+  lastModifiedDate?: Date,
+  otherDetails: File
 };
 
 export default class SaveFile extends Record({
   content: List([]),
   currency: "£",
-  uploadTime: "",
+  uploadTime: null,
   tags: List([]),
-  fileDetails: Map({})
+  fileName: "",
+  fileType: "",
+  lastModifiedDate: null,
+  otherDetails: Map({})
 })<SaveFileType> {}

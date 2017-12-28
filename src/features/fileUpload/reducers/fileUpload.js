@@ -47,12 +47,21 @@ const transfromFileForSaving = (file, fileDetails) => {
       }
     };
   });
+  const {
+    name: fileName,
+    type: fileType,
+    lastModifiedDate,
+    ...otherFileDetails
+  } = fileDetails;
   const saveFile = new SaveFile({
     currency: "£",
     uploadTime: new Date(),
     content: List(transformedFile),
     tags: List(["Nationwide"]),
-    fileDetails: Map(fileDetails)
+    fileName,
+    fileType,
+    lastModifiedDate,
+    otherDetails: Map(otherFileDetails)
   });
   return saveFile;
 };

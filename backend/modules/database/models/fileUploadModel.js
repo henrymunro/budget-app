@@ -1,12 +1,18 @@
-const { mongoose } = require("../databaseConnection");
+import { mongoose } from "../databaseConnection";
 const Schema = mongoose.Schema;
 
-// set up a mongoose model and pass it using module.exports
-module.exports = mongoose.model(
+export default mongoose.model(
   "fileUpload",
   new Schema(
     {
-      username: { type: String, required: true }
+      currency: { type: String, default: "£" },
+      uploadTime: { type: Date, required: true },
+      tags: { type: Array },
+      fileName: { type: String, required: true },
+      lastModifiedDate: { type: Date },
+      size: { type: Number },
+      fileType: { type: String },
+      otherDetails: { type: Object }
     },
     {
       timestamps: {

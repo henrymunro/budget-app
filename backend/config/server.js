@@ -8,6 +8,13 @@ const envVarsSchema = joi
       .string()
       .allow(["development", "staging", "production", "test"])
       .required(),
+    SEND_STACK: joi
+      .boolean()
+      .truthy("TRUE")
+      .truthy("true")
+      .falsy("FALSE")
+      .falsy("false")
+      .default(false),
     APP_NAME: joi.string().default("budget-app-backend"),
     LOG_DIR: joi.string().default("log"),
     LOGGER_ENABLED: joi
@@ -34,6 +41,7 @@ const config = {
   SERVER: {
     NODE_ENV: envVars.NODE_ENV,
     APP_NAME: envVars.APP_NAME,
+    SEND_STACK: envVars.SEND_STACK,
     LOGGER: {
       LOG_DIR: envVars.LOG_DIR,
       LEVEL: envVars.LOGGER_LEVEL,

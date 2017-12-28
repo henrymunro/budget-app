@@ -1,10 +1,2 @@
-const api = require("./api");
-const models = require("./models");
-
-module.exports = Object.assign(
-  {},
-  {
-    databaseApi: api,
-    models
-  }
-);
+export { default as databaseApi } from "./api";
+export { default as models } from "./models";

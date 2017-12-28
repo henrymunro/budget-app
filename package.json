@@ -43,7 +43,7 @@
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "start-server":
-      "DEBUG=databaseConnecton,express-mongo:* nodemon backend/bin/www  --exec babel-node --presets es2015,stage-2,flow",
+      "DEBUG=databaseConnecton,express-mongo:*,databaseAPI:*,routes:* nodemon backend/bin/www  --exec babel-node --presets es2015,stage-2,flow",
     "test": "npm-run-all -p watch-css test-js",
     "test:ci":
       "npm run build-css && CI=true react-scripts test --ci --verbose --silent --env=jsdom",
