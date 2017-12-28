@@ -7,14 +7,16 @@ import store from "./store";
 import "./App.css";
 import "common/assets/fonts/fontawesome-free-5.0.2/svg-with-js/js/fontawesome-all.js";
 
-import FileUpload from "features/fileUpload/index.js";
+import FileUpload from "features/fileUpload";
+import BudgetType from "features/budgetTypes";
 
 class App extends Component<null> {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          <FileUpload />
+          {/* <FileUpload /> */}
+          <BudgetType />
         </div>
       </Provider>
     );

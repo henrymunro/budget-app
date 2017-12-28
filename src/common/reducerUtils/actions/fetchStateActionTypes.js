@@ -1,5 +1,4 @@
 // @flow
-import moment from "moment";
 
 export default (name: string, path: string = "budget/") => {
   const capsName = name.toUpperCase();
