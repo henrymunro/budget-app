@@ -10,7 +10,7 @@ const path = require("path");
 var morgan = require("morgan");
 
 // http logging
-app.use(morgan("dev"));
+app.use(morgan("combined"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "/../build"));
@@ -28,7 +28,7 @@ const staticRouting = express.static(path.join(__dirname, "/../build"));
 app.use(staticRouting);
 
 // Loads Routes
-require("./router/index")(app);
+require("./router")(app);
 app.get("/*", (req, res) =>
   res.sendFile(path.join(__dirname, "/../build/index.html"))
 );
