@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { combineReducers } from "redux-immutable";
+import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
 
@@ -17,14 +18,14 @@ const reducer = combineReducers({
 
 const store = createStore(
   reducer,
-  composeEnhancers(applyMiddleware(thunk, logger))
+  composeEnhancers(applyMiddleware(promise(), thunk, logger))
 );
 
 export function createStoreWithState(state) {
   return createStore(
     reducer,
     state,
-    composeEnhancers(applyMiddleware(thunk, logger))
+    composeEnhancers(applyMiddleware(promise(), thunk, logger))
   );
 }
 

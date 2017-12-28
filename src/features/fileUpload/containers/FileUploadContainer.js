@@ -4,16 +4,28 @@ import { connect } from "react-redux";
 
 import { toJS } from "common/utils";
 
-import { getParsedFile, getSaveFile, getErrorParsingFile } from "../selectors";
+import {
+  getSaveFile,
+  getErrorParsingFile,
+  getUploadedFiles,
+  getUploadedFilesFetchState
+} from "../selectors";
 
-import { onFileParse, onFileParseError } from "../actions";
+import {
+  onFileParse,
+  onFileParseError,
+  fetchUploadedFiles,
+  saveUploadedFile
+} from "../actions";
 
 import FileUpload from "../components/FileUpload";
 
 const mapStateToProps = state => {
   return {
     saveFile: getSaveFile(state),
-    errorParsingFile: getErrorParsingFile(state)
+    errorParsingFile: getErrorParsingFile(state),
+    uploadedFiles: getUploadedFiles(state),
+    uploadedFilesFetchState: getUploadedFilesFetchState(state)
   };
 };
 
@@ -21,8 +33,21 @@ const mapDispatchToProps = dispatch => {
   return {
     onFileParse: (parsedFile, fileDetails) =>
       dispatch(onFileParse(parsedFile, fileDetails)),
-    onFileParseError: error => dispatch(onFileParseError(error))
+    onFileParseError: error => dispatch(onFileParseError(error)),
+    fetchUploadedFiles: () => dispatch(fetchUploadedFiles()),
+    saveUploadedFile: file => dispatch(saveUploadedFile(file))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(FileUpload));
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    saveUploadedFile: () => dispatchProps.saveUploadedFile(stateProps.saveFile)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
+  toJS(FileUpload)
+);

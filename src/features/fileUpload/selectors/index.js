@@ -1,10 +1,11 @@
 // @flow
 import type { State } from "common/types";
+import FetchState from "common/reducerUtils/models/FetchState";
 import FileUpload from "../models/FileUpload";
 import SaveFile from "../models/SaveFile";
 
 export function getFileUpload(state: State): FileUpload {
-  return state.get("fileUpload");
+  return state.getIn(["fileUpload", "fileUploadReducer"]);
 }
 
 export function getParsedFile(state: State): Object {
@@ -17,4 +18,12 @@ export function getSaveFile(state: State): SaveFile {
 
 export function getErrorParsingFile(state: State): boolean {
   return getFileUpload(state).errorParsingFile;
+}
+
+export function getUploadedFiles(state: State): Object {
+  return getFileUpload(state).uploadedFiles;
+}
+
+export function getUploadedFilesFetchState(state: State): FetchState {
+  return state.getIn(["fileUpload", "uploadedFilesFetchState"]);
 }

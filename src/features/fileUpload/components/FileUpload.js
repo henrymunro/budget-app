@@ -4,8 +4,8 @@ import React from "react";
 import ReactFileReader from "react-file-reader";
 import parse from "csv-parse/lib";
 
-import type { UploadedFileEntryType } from "../models/UploadedFileEntry";
-import type { SaveFileType } from "../models/SaveFile";
+import UploadedFileEntry from "../models/UploadedFileEntry";
+import SaveFile from "../models/SaveFile";
 
 import { toCamelCase } from "common/utils";
 import FileUploadTable from "./FileUploadTable";
@@ -13,9 +13,11 @@ import FileUploadTable from "./FileUploadTable";
 import "./FileUpload.css";
 
 type Props = {
-  saveFile: SaveFileType,
-  onFileParse: (Array<UploadedFileEntryType>, File) => void,
-  onFileParseError: string => void
+  saveFile: SaveFile,
+  onFileParse: (Array<UploadedFileEntry>, File) => void,
+  onFileParseError: string => void,
+  fetchUploadedFiles: () => void,
+  saveUploadedFile: () => void
 };
 
 export default class FileUpload extends React.PureComponent<Props> {
@@ -87,6 +89,12 @@ export default class FileUpload extends React.PureComponent<Props> {
         <ReactFileReader fileTypes={[".csv"]} handleFiles={this._handleFiles}>
           <button className="btn">Upload</button>
         </ReactFileReader>
+        <button onClick={() => this.props.fetchUploadedFiles()}>
+          GET UPLOADED FILES
+        </button>
+        <button onClick={() => this.props.saveUploadedFile()}>
+          SAVE UPLOADED FILES
+        </button>
         {saveFile &&
           saveFile.content.length > 0 && (
             <FileUploadTable data={saveFile.content} />

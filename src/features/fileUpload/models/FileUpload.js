@@ -7,11 +7,13 @@ import SaveFile from "./SaveFile";
 export type FileUploadType = {
   parsedFile: List<UploadedFileEntry>,
   errorParsingFile: ?string,
-  saveFile: SaveFile
+  saveFile: SaveFile,
+  uploadedFiles: List<any>
 };
 
 export default class FileUpload extends Record({
   parsedFile: List([]),
   errorParsingFile: null,
-  saveFile: new SaveFile()
+  saveFile: new SaveFile(),
+  uploadedFiles: List()
 })<FileUploadType> {}

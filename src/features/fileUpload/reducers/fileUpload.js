@@ -1,12 +1,18 @@
 // @flow
 import FileUpload from "../models/FileUpload";
 import SaveFile from "../models/SaveFile";
-import SaveFileEntry from "../models/SaveFileEntry";
 import { List, Map } from "immutable";
 
+import { combineReducers } from "redux-immutable";
+import { makeFetchStateReducer } from "common/reducerUtils/reducers/fetchState";
 import { actionTypes } from "../actions";
 
-export default (fileUpload = new FileUpload(), action) => {
+const uploadedFilesFetchState = makeFetchStateReducer(
+  "uploadedFiles",
+  "budget/fileUpload/"
+);
+
+const fileUploadReducer = (fileUpload = new FileUpload(), action) => {
   switch (action.type) {
     case actionTypes.PARSED_FILE:
       const { parsedFile, fileDetails } = action.payload;
@@ -16,6 +22,8 @@ export default (fileUpload = new FileUpload(), action) => {
         .set("saveFile", saveFile);
     case actionTypes.ERROR_PARSING_FILE:
       return fileUpload.set("errorParsingFile", action.payload.error);
+    case actionTypes.FETCH_UPLOADEDFILES_FULFILLED:
+      return fileUpload.set("uploadedFiles", List(action.payload.data));
     default:
       return fileUpload;
   }
@@ -48,3 +56,8 @@ const transfromFileForSaving = (file, fileDetails) => {
   });
   return saveFile;
 };
+
+export default combineReducers({
+  fileUploadReducer,
+  uploadedFilesFetchState
+});

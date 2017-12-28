@@ -11,4 +11,9 @@ module.exports = function(apiRoute) {
       sort: { createdAt: -1 }
     })
   );
+
+  apiRoute.route(routeURI).post((req, res, next) => {
+    console.log("HERE: ", req.body);
+    res.send(req.body);
+  });
 };
