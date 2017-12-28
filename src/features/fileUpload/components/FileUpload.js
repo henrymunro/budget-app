@@ -2,7 +2,7 @@
 
 import React from "react";
 import ReactFileReader from "react-file-reader";
-import parse from "csv-parse";
+import parse from "csv-parse/lib";
 
 import type { UploadedFileEntryType } from "../models/UploadedFileEntry";
 import type { SaveFileType } from "../models/SaveFile";
@@ -11,7 +11,6 @@ import { toCamelCase } from "common/utils";
 import FileUploadTable from "./FileUploadTable";
 
 import "./FileUpload.css";
-import SaveFileEntry from "features/fileUpload/models/SaveFileEntry";
 
 type Props = {
   saveFile: SaveFileType,
