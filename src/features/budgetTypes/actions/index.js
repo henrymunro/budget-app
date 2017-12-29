@@ -1,14 +1,9 @@
-import makeFetchStateActionsTypes from "common/reducerUtils/actions/fetchStateActionTypes";
+// @flow
 
-import makeSaveStateActionsTypes from "common/reducerUtils/actions/saveStateActionTypes";
+import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
 import api from "common/webAPI";
 
-const fetchBudgetTypeActionTypes = makeFetchStateActionsTypes(
-  "budgetType",
-  "budget/budgetTypes/"
-);
-
-const saveBudgetTypeActionTypes = makeSaveStateActionsTypes(
+const budgetTypeCRUDActionTypes = makeWebApiCRUDActionTypes(
   "budgetType",
   "budget/budgetTypes/"
 );
@@ -17,8 +12,7 @@ export const actionTypes = {
   UPDATE_NEW_BUDGET_TYPE: "budget/budgetTypes/UPDATE_NEW_BUDGET_TYPE",
   UPDATE_NEW_BUDGET_SUB_TYPE: "budget/budgetTypes/UPDATE_NEW_BUDGET_SUB_TYPE",
   // Web API
-  ...fetchBudgetTypeActionTypes,
-  ...saveBudgetTypeActionTypes
+  ...budgetTypeCRUDActionTypes
 };
 
 export function updateNewBudgetType(input: string) {
@@ -39,14 +33,14 @@ export function updateNewBudgetSubType(input: string) {
 
 export function fetchBudgetTypes() {
   return {
-    type: fetchBudgetTypeActionTypes.FETCH_BUDGETTYPE,
+    type: budgetTypeCRUDActionTypes.FETCH_BUDGETTYPE,
     payload: api.budgetType.getBudgetTypes()
   };
 }
 
 export function saveNewBudgetType(budgetType) {
   return {
-    type: saveBudgetTypeActionTypes.SAVE_BUDGETTYPE,
+    type: budgetTypeCRUDActionTypes.SAVE_BUDGETTYPE,
     payload: api.budgetType.saveNewBudgetType(budgetType)
   };
 }

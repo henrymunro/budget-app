@@ -1,6 +1,6 @@
 // @flow
 import type { State } from "common/types";
-import FetchState from "common/reducerUtils/models/FetchState";
+import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 import FileUpload from "../models/FileUpload";
 import SaveFile from "../models/SaveFile";
 
@@ -24,6 +24,6 @@ export function getUploadedFiles(state: State): Object {
   return getFileUpload(state).uploadedFiles;
 }
 
-export function getUploadedFilesFetchState(state: State): FetchState {
-  return state.getIn(["fileUpload", "uploadedFilesFetchState"]);
+export function getUploadedFilesCRUDState(state: State): WebApiCRUDState {
+  return state.getIn(["fileUpload", "uploadedFilesCRUDState"]);
 }

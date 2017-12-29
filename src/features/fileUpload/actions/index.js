@@ -1,9 +1,9 @@
 // @flow
 
-import makeFetchStateActionsTypes from "common/reducerUtils/actions/fetchStateActionTypes";
+import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
 import api from "common/webAPI";
 
-const uploadedFilesActionTypes = makeFetchStateActionsTypes(
+const uploadedFilesCRUDActionTypes = makeWebApiCRUDActionTypes(
   "uploadedFiles",
   "budget/fileUpload/"
 );
@@ -12,8 +12,7 @@ export const actionTypes = {
   PARSED_FILE: "budget/fileUpload/PARSED_FILE",
   ERROR_PARSING_FILE: "budget/fileUpload/ERROR_PARSING_FILE",
   // Web API
-  ...uploadedFilesActionTypes,
-  SAVE_UPLOADEDFILE: "budget/file/SAVE_UPLOADEDFILE"
+  ...uploadedFilesCRUDActionTypes
 };
 
 export function onFileParse(parsedFile: Array<Object>, fileDetails: Object) {
@@ -34,14 +33,14 @@ export function onFileParseError(error: string) {
 
 export function fetchUploadedFiles() {
   return {
-    type: uploadedFilesActionTypes.FETCH_UPLOADEDFILES,
+    type: uploadedFilesCRUDActionTypes.FETCH_UPLOADEDFILES,
     payload: api.fileUpload.getUploadedFiles()
   };
 }
 
 export function saveUploadedFile(file) {
   return {
-    type: actionTypes.SAVE_UPLOADEDFILE,
+    type: uploadedFilesCRUDActionTypes.SAVE_UPLOADEDFILE,
     payload: api.fileUpload.saveUploadedFile(file)
   };
 }

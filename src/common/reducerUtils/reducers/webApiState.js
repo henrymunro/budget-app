@@ -3,7 +3,7 @@ import WebApiState from "../models/WebApiState";
 import makeWebApiActionTypes from "../actions/webApiStateActionTypes";
 import moment from "moment";
 
-export const makeWebApiStateReducer = (
+const makeWebApiStateReducer = (
   name: string,
   path: string = "budget/",
   callType: string = "FETCH"
@@ -33,3 +33,5 @@ export const makeWebApiStateReducer = (
     }
   };
 };
+
+export default makeWebApiStateReducer;

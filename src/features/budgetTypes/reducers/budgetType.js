@@ -3,16 +3,10 @@ import BudgetTypeContainer from "../models/BudgetTypeContainer";
 import { List } from "immutable";
 
 import { combineReducers } from "redux-immutable";
-import { makeFetchStateReducer } from "common/reducerUtils/reducers/fetchState";
-import { makeSaveStateReducer } from "common/reducerUtils/reducers/saveState";
+import makeWebApiCRUDStateReducer from "common/reducerUtils/reducers/webApiCRUDState";
 import { actionTypes } from "../actions";
 
-const budgetTypeFetchState = makeFetchStateReducer(
-  "budgetType",
-  "budget/budgetTypes/"
-);
-
-const budgetTypeSaveState = makeSaveStateReducer(
+const budgetTypeCRUDState = makeWebApiCRUDStateReducer(
   "budgetType",
   "budget/budgetTypes/"
 );
@@ -32,6 +26,5 @@ const budgetTypeReducer = (budgetType = new BudgetTypeContainer(), action) => {
 
 export default combineReducers({
   budgetTypeReducer,
-  budgetTypeFetchState,
-  budgetTypeSaveState
+  budgetTypeCRUDState
 });

@@ -1,9 +1,8 @@
 // @flow
 
-import React, { SyntheticEvent } from "react";
+import * as React from "react";
 import type { BudgetType } from "../models/BudgetTypeContainer";
-import FetchState from "common/reducerUtils/models/FetchState";
-import SaveState from "common/reducerUtils/models/SaveState";
+import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 
 import "./BudgetTypes.css";
 
@@ -11,8 +10,7 @@ type Props = {
   newBudgetType: string,
   newBudgetSubType: string,
   budgetTypes: Array<BudgetType>,
-  budgetTypesFetchState: FetchState,
-  budgetTypesSaveState: SaveState,
+  budgetTypesCRUDState: WebApiCRUDState,
   updateNewBudgetType: string => void,
   updateNewBudgetSubType: string => void,
   fetchBudgetTypes: () => void,
@@ -41,10 +39,10 @@ export default class BudgetTypes extends React.PureComponent<Props> {
     );
   };
 
-  _updateNewBudgetType = (e: SyntheticEvent) => {
+  _updateNewBudgetType = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewBudgetType(e.target.value);
   };
-  _updateNewBudgetSubType = (e: SyntheticEvent) => {
+  _updateNewBudgetSubType = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewBudgetSubType(e.target.value);
   };
   render() {

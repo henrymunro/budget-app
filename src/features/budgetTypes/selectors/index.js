@@ -1,9 +1,8 @@
 // @flow
 import type { State } from "common/types";
-import FetchState from "common/reducerUtils/models/FetchState";
-import SaveState from "common/reducerUtils/models/SaveState";
+import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 
-export function getBudgetTypeReducer(state: State): FileUpload {
+export function getBudgetTypeReducer(state: State) {
   return state.getIn(["budgetType", "budgetTypeReducer"]);
 }
 
@@ -19,10 +18,6 @@ export function getBudgetTypes(state: State): Array<any> {
   return getBudgetTypeReducer(state).budgetTypes;
 }
 
-export function getBudgetTypesFetchState(state: State): FetchState {
-  return state.getIn(["budgetType", "budgetTypeFetchState"]);
-}
-
-export function getBudgetTypeSaveState(state: State): SaveState {
-  return state.getIn(["budgetType", "budgetTypeSaveState"]);
+export function getBudgetTypeCRUDState(state: State): WebApiCRUDState {
+  return state.getIn(["budgetType", "budgetTypeCRUDState"]);
 }

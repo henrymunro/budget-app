@@ -4,10 +4,10 @@ import SaveFile from "../models/SaveFile";
 import { List, Map } from "immutable";
 
 import { combineReducers } from "redux-immutable";
-import { makeFetchStateReducer } from "common/reducerUtils/reducers/fetchState";
+import makeWebApiCRUDStateReducer from "common/reducerUtils/reducers/webApiCRUDState";
 import { actionTypes } from "../actions";
 
-const uploadedFilesFetchState = makeFetchStateReducer(
+const uploadedFilesCRUDState = makeWebApiCRUDStateReducer(
   "uploadedFiles",
   "budget/fileUpload/"
 );
@@ -68,5 +68,5 @@ const transfromFileForSaving = (file, fileDetails) => {
 
 export default combineReducers({
   fileUploadReducer,
-  uploadedFilesFetchState
+  uploadedFilesCRUDState
 });

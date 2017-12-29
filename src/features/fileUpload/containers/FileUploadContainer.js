@@ -8,7 +8,7 @@ import {
   getSaveFile,
   getErrorParsingFile,
   getUploadedFiles,
-  getUploadedFilesFetchState
+  getUploadedFilesCRUDState
 } from "../selectors";
 
 import {
@@ -25,7 +25,7 @@ const mapStateToProps = state => {
     saveFile: getSaveFile(state),
     errorParsingFile: getErrorParsingFile(state),
     uploadedFiles: getUploadedFiles(state),
-    uploadedFilesFetchState: getUploadedFilesFetchState(state)
+    uploadedFilesCRUDState: getUploadedFilesCRUDState(state)
   };
 };
 
