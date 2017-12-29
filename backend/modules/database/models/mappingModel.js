@@ -6,6 +6,7 @@ export default mongoose.model(
   new Schema(
     {
       mapping: { type: String, required: true },
+      alias: { type: String },
       _typeId: { type: Schema.Types.ObjectId, required: true },
       type: { type: String, required: true },
       subType: { type: String, required: true },

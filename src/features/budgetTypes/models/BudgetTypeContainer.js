@@ -1,14 +1,14 @@
 // @flow
 import { Record, List } from "immutable";
 
-export type BudgetType = {
+export type BudgetTypeType = {
   _id: string,
   type: string,
   subType: string
 };
 
 export type BudgetTypeContainerType = {
-  budgetTypes: Array<BudgetType>,
+  budgetTypes: Array<BudgetTypeType>,
   newBudgetType?: string,
   newBudgetSubType?: string
 };

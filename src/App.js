@@ -9,14 +9,16 @@ import "common/assets/fonts/fontawesome-free-5.0.2/svg-with-js/js/fontawesome-al
 
 import FileUpload from "features/fileUpload";
 import BudgetType from "features/budgetTypes";
+import Mappings from "features/mappings";
 
 class App extends Component<null> {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          {/* <FileUpload /> */}
+          <FileUpload />
           <BudgetType />
+          <Mappings />
         </div>
       </Provider>
     );

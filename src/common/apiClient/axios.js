@@ -4,7 +4,8 @@ import config from "config.json";
 
 export const URLs = {
   fileUpload: "/fileUpload",
-  budgetType: "/budgetType"
+  budgetType: "/budgetType",
+  mapping: "/mapping"
 };
 
 export const api = axios.create({

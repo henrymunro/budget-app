@@ -1,16 +1,15 @@
 // @flow
 
 import * as React from "react";
-import type { BudgetType } from "../models/BudgetTypeContainer";
+import type { BudgetTypeType } from "../models/BudgetTypeContainer";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 
 import "./BudgetTypes.css";
-import { SyntheticEvent } from "react";
 
 type Props = {
   newBudgetType: string,
   newBudgetSubType: string,
-  budgetTypes: Array<BudgetType>,
+  budgetTypes: Array<BudgetTypeType>,
   budgetTypesCRUDState: WebApiCRUDState,
   updateNewBudgetType: string => void,
   updateNewBudgetSubType: string => void,

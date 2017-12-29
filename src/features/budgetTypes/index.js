@@ -1,6 +1,8 @@
 // @flow
-import BudgetType from "./containers/BudgetTypeContainer";
+import BudgetTypeContainer from "./containers/BudgetTypeContainer";
+import type { BudgetTypeType } from "./models/BudgetTypeContainer";
 
 export { default as reducer } from "./reducers/budgetType";
 
-export default BudgetType;
+export type { BudgetTypeType };
+export default BudgetTypeContainer;
