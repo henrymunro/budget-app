@@ -1,5 +1,3 @@
 import * as fileUpload from "./fileUpload";
 
-export default {
-  fileUpload
-};
+export default { fileUpload };
