@@ -9,7 +9,8 @@ export default mongoose.model(
       date: { type: Date, required: true },
       description: { type: String, required: true },
       amount: { type: Number, default: 0.0 },
-      otherDetails: { type: Object }
+      otherDetails: { type: Object },
+      endDate: { type: Date }
     },
     {
       timestamps: {

@@ -6,7 +6,8 @@ export default mongoose.model(
   new Schema(
     {
       type: { type: String, required: true },
-      subType: { type: String, required: true }
+      subType: { type: String, required: true },
+      endDate: { type: Date }
     },
     {
       timestamps: {

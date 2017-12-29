@@ -12,7 +12,8 @@ export default mongoose.model(
       lastModifiedDate: { type: Date },
       size: { type: Number },
       fileType: { type: String },
-      otherDetails: { type: Object }
+      otherDetails: { type: Object },
+      endDate: { type: Date }
     },
     {
       timestamps: {

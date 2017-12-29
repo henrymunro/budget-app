@@ -14,7 +14,8 @@ export default mongoose.model(
       budgetType: { type: String },
       budgetSubType: { type: String },
       amount: { type: Number, default: 0.0 },
-      otherDetails: { type: Object }
+      otherDetails: { type: Object },
+      endDate: { type: Date }
     },
     {
       timestamps: {
