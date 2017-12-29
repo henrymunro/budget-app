@@ -6,14 +6,20 @@ const apiRoutes = require("express").Router();
 require("./fileUpload")(apiRoutes);
 
 // Basic app routes
-const budgetTypeCRUDCreator = new CRUDRouteCreator(
+new CRUDRouteCreator(
   apiRoutes,
   "/budgetType",
   models.BudgetTypeModel
-);
-
-budgetTypeCRUDCreator.createCRUDRoutes({
+).createCRUDRoutes({
   getOptions: { sort: { type: 1, subType: 1 } }
+});
+
+new CRUDRouteCreator(
+  apiRoutes,
+  "/mapping",
+  models.MappingModel
+).createCRUDRoutes({
+  getOptions: { sort: { mapping: 1 } }
 });
 
 module.exports = apiRoutes;
