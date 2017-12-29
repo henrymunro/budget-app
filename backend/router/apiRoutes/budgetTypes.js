@@ -12,4 +12,6 @@ module.exports = function(apiRoute) {
   );
 
   apiRoute.route(routeURI).post(appRoutes.postEntries);
+
+  apiRoute.route(routeURI).delete(appRoutes.deleteEntry);
 };
