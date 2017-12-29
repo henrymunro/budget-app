@@ -15,7 +15,13 @@ export function getNewBudgetSubType(state: State): string {
   return getBudgetTypeReducer(state).newBudgetSubType;
 }
 
-export function getBudgetTypes(state: State): Array<GroupedBudgetTypesType> {
+export function getBudgetTypes(state: State): string {
+  return getBudgetTypeReducer(state).budgetTypes;
+}
+
+export function getNestedBudgetTypes(
+  state: State
+): Array<GroupedBudgetTypesType> {
   const budgetTypes = getBudgetTypeReducer(state).budgetTypes;
   const distinctTypes = budgetTypes
     .map(elm => elm.type)

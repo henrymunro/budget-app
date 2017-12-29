@@ -18,6 +18,12 @@ import {
   mappingCRUDActions
 } from "../actions";
 
+import {
+  getBudgetTypes,
+  getNestedBudgetTypes,
+  fetchBudgetTypes
+} from "../../budgetTypes";
+
 import Mapping from "../components/Mapping";
 
 const mapStateToProps = state => {
@@ -26,7 +32,9 @@ const mapStateToProps = state => {
     newMappingAlias: getNewMappingAlias(state),
     newMappingType: getNewMappingType(state),
     mappings: getMappings(state),
-    mappingCRUDState: getMappingCRUDState(state)
+    mappingCRUDState: getMappingCRUDState(state),
+    budgetTypes: getNestedBudgetTypes(state),
+    nonNestedBudgetTypes: getBudgetTypes(state)
   };
 };
 
@@ -38,13 +46,17 @@ const mapDispatchToProps = dispatch => {
     fetchMappings: () => dispatch(mappingCRUDActions.fetchAction()),
     saveNewMapping: mapping => dispatch(mappingCRUDActions.saveAction(mapping)),
     deleteMapping: _id => dispatch(mappingCRUDActions.deleteAction(_id)),
-    updateMapping: updates => dispatch(mappingCRUDActions.updateAction(updates))
+    updateMapping: updates =>
+      dispatch(mappingCRUDActions.updateAction(updates)),
+    fetchBudgetTypes: () => dispatch(fetchBudgetTypes())
   };
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { _id, ...otherNewMappingTypeDetails } = stateProps.newMappingType;
   const newMappingToSave = {
-    ...stateProps.newMappingType,
+    ...otherNewMappingTypeDetails,
+    _typeId: _id,
     mapping: stateProps.newMappingName,
     alias: stateProps.newMappingAlias
   };
@@ -52,7 +64,13 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    saveNewMapping: () => dispatchProps.saveNewMapping(newMappingToSave)
+    saveNewMapping: () => dispatchProps.saveNewMapping(newMappingToSave),
+    updateNewMappingType: (_id: string) => {
+      const type = stateProps.nonNestedBudgetTypes
+        .toJS()
+        .filter(elm => elm._id === _id)[0];
+      return dispatchProps.updateNewMappingType(type);
+    }
   };
 };
 

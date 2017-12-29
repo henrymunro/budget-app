@@ -40,12 +40,13 @@ export default class BudgetTypesList extends React.PureComponent<Props> {
         {budgetTypes.map((item: GroupedBudgetTypesType, index) => {
           const { type, subTypes } = item;
           return (
-            <div className="BudgetTypesList__row">
+            <div key={index} className="BudgetTypesList__row">
               <div className="BudgetTypeList__type">{type}</div>
               <div className="BudgetTypeList__subTypes">
-                {subTypes.map(({ subType, _id }, index) => {
+                {subTypes.map(({ subType, _id }, subTypeIndex) => {
                   return (
                     <div
+                      key={subTypeIndex}
                       className="BudgetTypeList__subType"
                       data-id={_id}
                       onClick={this._handleClick}

@@ -22,5 +22,5 @@ export default class MappingContainer extends Record({
   mappings: List([]),
   newMappingName: null,
   newMappingAlias: null,
-  newMappingType: null
+  newMappingType: { type: null, subType: null, _id: null }
 })<MappingContainerType> {}

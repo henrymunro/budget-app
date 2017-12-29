@@ -7,7 +7,7 @@ import { toJS } from "common/utils";
 import {
   getNewBudgetType,
   getNewBudgetSubType,
-  getBudgetTypes,
+  getNestedBudgetTypes,
   getBudgetTypeCRUDState
 } from "../selectors";
 
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
   return {
     newBudgetType: getNewBudgetType(state),
     newBudgetSubType: getNewBudgetSubType(state),
-    budgetTypes: getBudgetTypes(state),
+    budgetTypes: getNestedBudgetTypes(state),
     budgetTypeCRUDState: getBudgetTypeCRUDState(state)
   };
 };
