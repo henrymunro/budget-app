@@ -11,7 +11,7 @@ import type {
 
 import type { FileUploadContentsType } from "../types/fileUploadContentsType";
 
-const debug = require("debug")("databaseAPI:fileUpload");
+const debug = require("debug")("database:api-fileUpload");
 
 const saveNewFileUpload = async (file: FileUploadType) => {
   debug("Recieved request to save new file upload to DB");

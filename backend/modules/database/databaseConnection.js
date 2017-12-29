@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const debug = require("debug")("databaseConnecton");
+const debug = require("debug")("database:connecton");
 const { DATABASE } = require("../../config");
 
 debug("Loading in database connection");
