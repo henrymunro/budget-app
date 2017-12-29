@@ -1,7 +1,8 @@
 import * as fileUpload from "./routes/fileUpload";
 import * as budgetType from "./routes/budgetTypes";
+import APIRouteBuilder from "./routes/CRUDRoute";
+import APIActionBuilder from "./actionBuilder";
 
-export default {
-  fileUpload,
-  budgetType
-};
+export { fileUpload, budgetType, APIRouteBuilder };
+
+export default APIActionBuilder;

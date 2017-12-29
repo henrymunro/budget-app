@@ -14,8 +14,7 @@ import {
 import {
   onFileParse,
   onFileParseError,
-  fetchUploadedFiles,
-  saveUploadedFile
+  uploadedFilesCRUDActions
 } from "../actions";
 
 import FileUpload from "../components/FileUpload";
@@ -34,8 +33,9 @@ const mapDispatchToProps = dispatch => {
     onFileParse: (parsedFile, fileDetails) =>
       dispatch(onFileParse(parsedFile, fileDetails)),
     onFileParseError: error => dispatch(onFileParseError(error)),
-    fetchUploadedFiles: () => dispatch(fetchUploadedFiles()),
-    saveUploadedFile: file => dispatch(saveUploadedFile(file))
+    fetchUploadedFiles: () => dispatch(uploadedFilesCRUDActions.fetchAction()),
+    saveUploadedFile: file =>
+      dispatch(uploadedFilesCRUDActions.saveAction(file))
   };
 };
 

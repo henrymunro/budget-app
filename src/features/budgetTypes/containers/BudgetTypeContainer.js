@@ -14,8 +14,7 @@ import {
 import {
   updateNewBudgetType,
   updateNewBudgetSubType,
-  fetchBudgetTypes,
-  saveNewBudgetType
+  budgetTypeCRUDActions
 } from "../actions";
 
 import BudgetTypes from "../components/BudgetTypes";
@@ -33,8 +32,12 @@ const mapDispatchToProps = dispatch => {
   return {
     updateNewBudgetType: input => dispatch(updateNewBudgetType(input)),
     updateNewBudgetSubType: input => dispatch(updateNewBudgetSubType(input)),
-    fetchBudgetTypes: () => dispatch(fetchBudgetTypes()),
-    saveNewBudgetType: budgetType => dispatch(saveNewBudgetType(budgetType))
+    fetchBudgetTypes: () => dispatch(budgetTypeCRUDActions.fetchAction()),
+    saveNewBudgetType: budgetType =>
+      dispatch(budgetTypeCRUDActions.saveAction(budgetType)),
+    deleteBudgetType: _id => dispatch(budgetTypeCRUDActions.deleteAction(_id)),
+    updateBudgetType: updates =>
+      dispatch(budgetTypeCRUDActions.updateAction(updates))
   };
 };
 

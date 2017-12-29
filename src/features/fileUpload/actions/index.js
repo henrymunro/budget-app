@@ -1,7 +1,7 @@
 // @flow
 
 import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
-import api from "common/webAPI";
+import APIActionBuilder from "common/webAPI";
 
 const uploadedFilesCRUDActionTypes = makeWebApiCRUDActionTypes(
   "uploadedFiles",
@@ -31,16 +31,8 @@ export function onFileParseError(error: string) {
 
 // Web API Interface
 
-export function fetchUploadedFiles() {
-  return {
-    type: uploadedFilesCRUDActionTypes.FETCH_UPLOADEDFILES,
-    payload: api.fileUpload.getUploadedFiles()
-  };
-}
-
-export function saveUploadedFile(file) {
-  return {
-    type: uploadedFilesCRUDActionTypes.SAVE_UPLOADEDFILE,
-    payload: api.fileUpload.saveUploadedFile(file)
-  };
-}
+export const uploadedFilesCRUDActions = APIActionBuilder(
+  "fileUpload",
+  uploadedFilesCRUDActionTypes,
+  "uploadedFiles"
+);

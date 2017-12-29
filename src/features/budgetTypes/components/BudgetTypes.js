@@ -5,6 +5,7 @@ import type { BudgetType } from "../models/BudgetTypeContainer";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 
 import "./BudgetTypes.css";
+import { SyntheticEvent } from "react";
 
 type Props = {
   newBudgetType: string,
@@ -14,7 +15,9 @@ type Props = {
   updateNewBudgetType: string => void,
   updateNewBudgetSubType: string => void,
   fetchBudgetTypes: () => void,
-  saveNewBudgetType: () => void
+  saveNewBudgetType: () => void,
+  deleteBudgetType: string => void,
+  updateBudgetType: ({ _id: string }) => void
 };
 
 export default class BudgetTypes extends React.PureComponent<Props> {
@@ -22,15 +25,21 @@ export default class BudgetTypes extends React.PureComponent<Props> {
     this.props.fetchBudgetTypes();
   }
 
+  _deleteBudgetType = (e: SyntheticEvent<HTMLDivElement>) => {
+    const _id = e.target.getAttribute("data-id");
+    console.log(e.target);
+    this.props.deleteBudgetType(_id);
+  };
+
   renderBudgetTypes = () => {
     const { budgetTypes } = this.props;
     return (
       <div>
         {budgetTypes &&
           budgetTypes.length > 0 &&
-          budgetTypes.map(({ type, subType }, index) => (
-            <div key={index}>
-              <p>
+          budgetTypes.map(({ type, subType, _id }, index) => (
+            <div key={index} data-id={_id} onClick={this._deleteBudgetType}>
+              <p data-id={_id}>
                 Type: {type}, SubType: {subType}
               </p>
             </div>
