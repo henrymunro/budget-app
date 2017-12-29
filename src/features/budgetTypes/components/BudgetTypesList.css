@@ -9,10 +9,12 @@
  *                                          '200', 'a100')
  */
 .BudgetTypeList {
+  box-shadow: 0 1px 3px 3px #e0f7fa;
   display: flex;
   flex-direction: column;
   min-width: 300px;
   max-width: 500px;
+  border-radius: 5px;
 }
 .BudgetTypeList .BudgetTypesList__row {
   flex: 1;
@@ -21,6 +23,22 @@
   background-color: #26c6da;
   border: 2px solid #00acc1;
   color: white;
+}
+.BudgetTypeList .BudgetTypesList__row:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.BudgetTypeList
+  .BudgetTypesList__row:first-child
+  .BudgetTypeList__subType:first-child {
+  border-radius: 0 5px 0 0;
+}
+.BudgetTypeList .BudgetTypesList__row:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.BudgetTypeList
+  .BudgetTypesList__row:last-child
+  .BudgetTypeList__subType:last-child {
+  border-radius: 0 0 5px 0;
 }
 .BudgetTypeList .BudgetTypeList__type {
   flex: 1;

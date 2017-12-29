@@ -19,6 +19,12 @@ const budgetTypeReducer = (budgetType = new BudgetTypeContainer(), action) => {
       return budgetType.set("newBudgetSubType", action.payload);
     case actionTypes.FETCH_BUDGETTYPE_FULFILLED:
       return budgetType.set("budgetTypes", List(action.payload.data));
+    case actionTypes.DELETE_BUDGETTYPE_FULFILLED:
+      const { _id } = action.payload.data;
+      return budgetType.set(
+        "budgetTypes",
+        budgetType.get("budgetTypes").filterNot(type => type._id === _id)
+      );
     default:
       return budgetType;
   }

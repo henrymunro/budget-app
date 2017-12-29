@@ -21,6 +21,11 @@ $color-a200: material-color($base-color-scheme, "a200");
 $color-a400: material-color($base-color-scheme, "a400");
 $color-a700: material-color($base-color-scheme, "a700");
 
+// Cards
+$borderRadiusSmall: 3px;
+$borderRadiusMed: 5px;
+$borderRadiusLarge: 10px;
+
 // Shadows
 
 @mixin shadowSmall ($color: material-color($base-color-scheme, "500")) {

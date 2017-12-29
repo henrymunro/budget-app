@@ -80,6 +80,8 @@ export default class ExpressDatabaseInterface {
       debug("Error performing database update: ", err);
       return this._sendError(res, err);
     }
+
+    if (!output._id) output._id = _id;
     return res.json(output);
   }
 
