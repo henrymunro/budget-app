@@ -1,15 +1,16 @@
 // @flow
 
 import * as React from "react";
-import type { BudgetTypeType } from "../models/BudgetTypeContainer";
+import type { GroupedBudgetTypesType } from "../models/BudgetTypeContainer";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
+import BudgetTypesList from "./BudgetTypesList";
 
 import "./BudgetTypes.css";
 
 type Props = {
   newBudgetType: string,
   newBudgetSubType: string,
-  budgetTypes: Array<BudgetTypeType>,
+  budgetTypes: Array<GroupedBudgetTypesType>,
   budgetTypesCRUDState: WebApiCRUDState,
   updateNewBudgetType: string => void,
   updateNewBudgetSubType: string => void,
@@ -24,29 +25,6 @@ export default class BudgetTypes extends React.PureComponent<Props> {
     this.props.fetchBudgetTypes();
   }
 
-  _deleteBudgetType = (e: SyntheticEvent<HTMLDivElement>) => {
-    const _id = e.target.getAttribute("data-id");
-    console.log(e.target);
-    this.props.deleteBudgetType(_id);
-  };
-
-  renderBudgetTypes = () => {
-    const { budgetTypes } = this.props;
-    return (
-      <div>
-        {budgetTypes &&
-          budgetTypes.length > 0 &&
-          budgetTypes.map(({ type, subType, _id }, index) => (
-            <div key={index} data-id={_id} onClick={this._deleteBudgetType}>
-              <p data-id={_id}>
-                Type: {type}, SubType: {subType}
-              </p>
-            </div>
-          ))}
-      </div>
-    );
-  };
-
   _updateNewBudgetType = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewBudgetType(e.target.value);
   };
@@ -55,6 +33,8 @@ export default class BudgetTypes extends React.PureComponent<Props> {
   };
   render() {
     const {
+      budgetTypes,
+      deleteBudgetType,
       newBudgetType,
       newBudgetSubType,
       saveNewBudgetType,
@@ -74,7 +54,10 @@ export default class BudgetTypes extends React.PureComponent<Props> {
         />
         <button onClick={saveNewBudgetType}>Save</button>
         <button onClick={fetchBudgetTypes}>Fetch</button>
-        {this.renderBudgetTypes()}
+        <BudgetTypesList
+          budgetTypes={budgetTypes}
+          deleteBudgetType={deleteBudgetType}
+        />
       </div>
     );
   }

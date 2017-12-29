@@ -32,3 +32,6 @@ export function toCamelCase(str: string): string {
     })
     .replace(/\s+/g, "");
 }
+
+export const findClosestId = e =>
+  e.target.closest("[data-id]").getAttribute("data-id");

@@ -7,6 +7,15 @@ export type BudgetTypeType = {
   subType: string
 };
 
+export type GroupedBudgetTypesType = {
+  type: string,
+  subTypes: Array<{
+    type: string,
+    subType: string,
+    _id: string
+  }>
+};
+
 export type BudgetTypeContainerType = {
   budgetTypes: Array<BudgetTypeType>,
   newBudgetType?: string,

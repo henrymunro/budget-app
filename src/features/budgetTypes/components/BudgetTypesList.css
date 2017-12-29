@@ -1,0 +1,59 @@
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+.BudgetTypeList {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 500px;
+}
+.BudgetTypeList .BudgetTypesList__row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #26c6da;
+  border: 2px solid #00acc1;
+  color: white;
+}
+.BudgetTypeList .BudgetTypeList__type {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.BudgetTypeList .BudgetTypeList__subTypes {
+  flex: 1;
+  display: flex;
+  min-height: 31px;
+  flex-direction: column;
+  border-left: 2px solid #00acc1;
+}
+.BudgetTypeList .BudgetTypeList__subType {
+  flex: 1;
+  font-size: 14px;
+  padding: 5px;
+  box-sizing: border-box;
+  min-height: 20px;
+  background: #80deea;
+  border-bottom: 1px solid #00bcd4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.BudgetTypeList .BudgetTypeList__subType > span {
+  flex: 1;
+}
+.BudgetTypeList .BudgetTypeList__subType:hover {
+  background: #4dd0e1;
+}
+.BudgetTypeList .BudgetTypeList__subType:last-child {
+  border-bottom: none;
+}
