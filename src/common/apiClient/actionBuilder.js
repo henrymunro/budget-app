@@ -1,11 +1,11 @@
 // @flow
 
-import { APIRouteBuilder } from "common/webAPI";
+import { APIClientRouteBuilder } from "common/apiClient";
 
 export default (route: string, actionTypes: Object, actionName?: string) => {
   const actionTypeNameLowerCase = actionName || route;
   const actionTypeName = actionTypeNameLowerCase.toUpperCase();
-  const apiRoutes = new APIRouteBuilder(route);
+  const apiRoutes = new APIClientRouteBuilder(route);
 
   const fetchAction = () => ({
     type: actionTypes[`FETCH_${actionTypeName}`],

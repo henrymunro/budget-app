@@ -1,7 +1,7 @@
 // @flow
 
 import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
-import APIActionBuilder from "common/webAPI";
+import APIClientActionBuilder from "common/apiClient";
 
 const budgetTypeCRUDActionTypes = makeWebApiCRUDActionTypes(
   "budgetType",
@@ -31,7 +31,7 @@ export function updateNewBudgetSubType(input: string) {
 
 // Web API Interface
 
-export const budgetTypeCRUDActions = APIActionBuilder(
+export const budgetTypeCRUDActions = APIClientActionBuilder(
   "budgetType",
   budgetTypeCRUDActionTypes
 );

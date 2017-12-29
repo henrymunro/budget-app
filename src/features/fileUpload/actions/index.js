@@ -1,7 +1,7 @@
 // @flow
 
 import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
-import APIActionBuilder from "common/webAPI";
+import APIClientActionBuilder from "common/apiClient";
 
 const uploadedFilesCRUDActionTypes = makeWebApiCRUDActionTypes(
   "uploadedFiles",
@@ -31,7 +31,7 @@ export function onFileParseError(error: string) {
 
 // Web API Interface
 
-export const uploadedFilesCRUDActions = APIActionBuilder(
+export const uploadedFilesCRUDActions = APIClientActionBuilder(
   "fileUpload",
   uploadedFilesCRUDActionTypes,
   "uploadedFiles"
