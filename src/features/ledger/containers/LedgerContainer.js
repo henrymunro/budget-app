@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 
 import { toJS } from "common/utils";
 
-import { getLedger, getLedgerCRUDState } from "../selectors";
+import {
+  getLedger,
+  getLedgerGroupedByMonth,
+  getLedgerCRUDState
+} from "../selectors";
 
 import { ledgerCRUDActions } from "../actions";
 
@@ -13,6 +17,7 @@ import Ledger from "../components/Ledger";
 const mapStateToProps = state => {
   return {
     ledger: getLedger(state),
+    ledgerGroupedByMonth: getLedgerGroupedByMonth(state),
     ledgerCRUDState: getLedgerCRUDState(state)
   };
 };

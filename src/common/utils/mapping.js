@@ -1,8 +1,6 @@
 // @flow
 
 import type { MappingType } from "features/mappings";
-import type { LedgerType } from "../../../backend/modules/database";
-import type { SaveFileEntryType } from "../../features/fileUpload";
 
 export const groupDescriptions = (
   descriptions: Array<string>
