@@ -1,5 +1,5 @@
 // @flow
-import { Record, List } from "immutable";
+import { Record, List, Map } from "immutable";
 import type { BudgetTypeType } from "../../budgetTypes";
 
 export type MappingType = {
@@ -22,5 +22,5 @@ export default class MappingContainer extends Record({
   mappings: List([]),
   newMappingName: null,
   newMappingAlias: null,
-  newMappingType: { type: null, subType: null, _id: null }
+  newMappingType: Map({ type: null, subType: null, _id: null })
 })<MappingContainerType> {}

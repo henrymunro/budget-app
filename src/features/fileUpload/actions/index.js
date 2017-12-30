@@ -2,6 +2,7 @@
 
 import makeWebApiCRUDActionTypes from "common/reducerUtils/actions/webApiCRUDActionTypes";
 import APIClientActionBuilder from "common/apiClient";
+import type { MappingType } from "../../mappings";
 
 const uploadedFilesCRUDActionTypes = makeWebApiCRUDActionTypes(
   "uploadedFiles",
@@ -15,10 +16,14 @@ export const actionTypes = {
   ...uploadedFilesCRUDActionTypes
 };
 
-export function onFileParse(parsedFile: Array<Object>, fileDetails: Object) {
+export function onFileParse(
+  parsedFile: Array<Object>,
+  fileDetails: Object,
+  mappings: Array<MappingType>
+) {
   return {
     type: actionTypes.PARSED_FILE,
-    payload: { parsedFile, fileDetails }
+    payload: { parsedFile, fileDetails, mappings }
   };
 }
 

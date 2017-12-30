@@ -22,4 +22,10 @@ new CRUDRouteCreator(
   getOptions: { sort: { mapping: 1 } }
 });
 
+new CRUDRouteCreator(apiRoutes, "/ledger", models.LegderModel).createCRUDRoutes(
+  {
+    getOptions: { sort: { date: -1 } }
+  }
+);
+
 module.exports = apiRoutes;

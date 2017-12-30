@@ -1,13 +1,14 @@
 // @flow
 
-export type FileUploadContentsType = {
+export type LedgerType = {
   _fileUploadId: string,
+  _typeId?: string,
   date: Date,
   description: string,
   mappingAlias?: string,
+  userDescription?: string,
+  amount: number,
   type?: string,
   subType?: string,
-  _typeId?: string,
-  amount: number,
   otherDetails: Object
 };

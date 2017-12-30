@@ -53,7 +53,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { _id, ...otherNewMappingTypeDetails } = stateProps.newMappingType;
+  const {
+    _id,
+    ...otherNewMappingTypeDetails
+  } = stateProps.newMappingType.toJS();
   const newMappingToSave = {
     ...otherNewMappingTypeDetails,
     _typeId: _id,

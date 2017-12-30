@@ -6,6 +6,7 @@ import parse from "csv-parse/lib";
 
 import UploadedFileEntry from "../models/UploadedFileEntry";
 import SaveFile from "../models/SaveFile";
+import type { MappingType } from "../../mappings";
 
 import { toCamelCase } from "common/utils";
 import FileUploadTable from "./FileUploadTable";
@@ -14,13 +15,19 @@ import "./FileUpload.css";
 
 type Props = {
   saveFile: SaveFile,
+  mappings: Array<MappingType>,
   onFileParse: (Array<UploadedFileEntry>, File) => void,
   onFileParseError: string => void,
   fetchUploadedFiles: () => void,
-  saveUploadedFile: () => void
+  saveUploadedFile: () => void,
+  fetchMappings: () => void
 };
 
 export default class FileUpload extends React.PureComponent<Props> {
+  componentWillMount() {
+    this.props.fetchMappings();
+  }
+
   _handleFiles = (files: FileList) => {
     const {
       name,

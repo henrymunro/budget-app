@@ -34,10 +34,7 @@ const mapDispatchToProps = dispatch => {
     updateNewBudgetSubType: input => dispatch(updateNewBudgetSubType(input)),
     fetchBudgetTypes: () => dispatch(budgetTypeCRUDActions.fetchAction()),
     saveNewBudgetType: budgetType =>
-      dispatch(async () => {
-        await dispatch(budgetTypeCRUDActions.saveAction(budgetType));
-        dispatch(budgetTypeCRUDActions.fetchAction());
-      }),
+      dispatch(budgetTypeCRUDActions.saveAction(budgetType)),
     deleteBudgetType: _id => dispatch(budgetTypeCRUDActions.deleteAction(_id)),
     updateBudgetType: updates =>
       dispatch(budgetTypeCRUDActions.updateAction(updates))

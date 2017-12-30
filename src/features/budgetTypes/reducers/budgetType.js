@@ -5,6 +5,7 @@ import { List } from "immutable";
 import { combineReducers } from "redux-immutable";
 import makeWebApiCRUDStateReducer from "common/reducerUtils/reducers/webApiCRUDState";
 import { actionTypes } from "../actions";
+import { removeIdFromList, addNewItemToList } from "common/utils";
 
 const budgetTypeCRUDState = makeWebApiCRUDStateReducer(
   "budgetType",
@@ -19,12 +20,17 @@ const budgetTypeReducer = (budgetType = new BudgetTypeContainer(), action) => {
       return budgetType.set("newBudgetSubType", action.payload);
     case actionTypes.FETCH_BUDGETTYPE_FULFILLED:
       return budgetType.set("budgetTypes", List(action.payload.data));
+    case actionTypes.SAVE_BUDGETTYPE_FULFILLED:
+      return addNewItemToList(budgetType, "budgetTypes", action.payload.data)
+        .set("newBudgetType", null)
+        .set("newBudgetSubType", null);
     case actionTypes.DELETE_BUDGETTYPE_FULFILLED:
-      const { _id } = action.payload.data;
-      return budgetType.set(
+      return removeIdFromList(
+        budgetType,
         "budgetTypes",
-        budgetType.get("budgetTypes").filterNot(type => type._id === _id)
+        action.payload.data._id
       );
+
     default:
       return budgetType;
   }

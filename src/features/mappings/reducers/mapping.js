@@ -1,11 +1,11 @@
 // @flow
 import MappingContainer from "../models/MappingContainer";
-import { List } from "immutable";
+import { List, Map } from "immutable";
 
 import { combineReducers } from "redux-immutable";
 import makeWebApiCRUDStateReducer from "common/reducerUtils/reducers/webApiCRUDState";
 import { actionTypes } from "../actions";
-import { removeIdFromList } from "common/utils";
+import { removeIdFromList, addNewItemToList } from "common/utils";
 
 const mappingCRUDState = makeWebApiCRUDStateReducer(
   "mapping",
@@ -19,9 +19,14 @@ const mappingReducer = (mapping = new MappingContainer(), action) => {
     case actionTypes.UPDATE_NEW_MAPPING_ALIAS:
       return mapping.set("newMappingAlias", action.payload);
     case actionTypes.UPDATE_NEW_MAPPING_TYPE:
-      return mapping.set("newMappingType", action.payload);
+      return mapping.set("newMappingType", Map(action.payload));
     case actionTypes.FETCH_MAPPING_FULFILLED:
       return mapping.set("mappings", List(action.payload.data));
+    case actionTypes.SAVE_MAPPING_FULFILLED:
+      return addNewItemToList(mapping, "mappings", action.payload.data)
+        .set("newMappingName", null)
+        .set("newMappingAlias", null)
+        .set("newMappingType", Map({ type: null, subType: null, _id: null }));
     case actionTypes.DELETE_MAPPING_FULFILLED:
       return removeIdFromList(mapping, "mappings", action.payload.data._id);
     default:

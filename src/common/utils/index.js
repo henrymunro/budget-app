@@ -41,3 +41,6 @@ export const removeIdFromList = (reducerState, listName, _id) =>
     listName,
     reducerState.get(listName).filterNot(type => type._id === _id)
   );
+
+export const addNewItemToList = (reducerState, listName, object) =>
+  reducerState.set(listName, reducerState.get(listName).push(object));

@@ -6,13 +6,13 @@ export default mongoose.model(
   new Schema(
     {
       _fileUploadId: { type: Schema.Types.ObjectId, required: true },
-      _fileUploadContentsId: { type: Schema.Types.ObjectId, required: true },
-      _budgetTypeId: { type: Schema.Types.ObjectId, required: true },
+      _typeId: { type: Schema.Types.ObjectId, required: true },
       date: { type: Date, required: true },
       description: { type: String, required: true },
-      userDescription: { type: String, default: "" },
-      budgetType: { type: String },
-      budgetSubType: { type: String },
+      userDescription: { type: String },
+      mappingAlias: { type: String },
+      type: { type: String, required: true },
+      subType: { type: String, required: true },
       amount: { type: Number, default: 0.0 },
       otherDetails: { type: Object },
       endDate: { type: Date }

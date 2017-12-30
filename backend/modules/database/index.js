@@ -9,11 +9,15 @@ import type {
   RecievedFileUploadType
 } from "./types/FileUploadType";
 import type { FileUploadContentsType } from "./types/FileUploadContentsType";
+import type { LedgerType } from "./types/LedgerType";
 
-export type { GetOptionsType };
-export type { FileUploadType };
-export type { RecievedFileUploadType };
-export type { FileUploadContentsType };
+export type {
+  GetOptionsType,
+  FileUploadType,
+  RecievedFileUploadType,
+  FileUploadContentsType,
+  LedgerType
+};
 
 export { default as databaseApi } from "./api";
 export { default as models } from "./models";
