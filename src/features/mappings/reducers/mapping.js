@@ -5,6 +5,7 @@ import { List } from "immutable";
 import { combineReducers } from "redux-immutable";
 import makeWebApiCRUDStateReducer from "common/reducerUtils/reducers/webApiCRUDState";
 import { actionTypes } from "../actions";
+import { removeIdFromList } from "common/utils";
 
 const mappingCRUDState = makeWebApiCRUDStateReducer(
   "mapping",
@@ -21,6 +22,8 @@ const mappingReducer = (mapping = new MappingContainer(), action) => {
       return mapping.set("newMappingType", action.payload);
     case actionTypes.FETCH_MAPPING_FULFILLED:
       return mapping.set("mappings", List(action.payload.data));
+    case actionTypes.DELETE_MAPPING_FULFILLED:
+      return removeIdFromList(mapping, "mappings", action.payload.data._id);
     default:
       return mapping;
   }

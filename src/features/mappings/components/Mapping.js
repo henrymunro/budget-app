@@ -6,6 +6,7 @@ import type { MappingType } from "../models/MappingContainer";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 import { BudgetTypeList } from "../../budgetTypes";
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
+import MappingsTable from "./MappingsTable";
 
 import "./Mapping.css";
 
@@ -31,42 +32,18 @@ export default class Mapping extends React.PureComponent<Props> {
     this.props.fetchMappings();
   }
 
-  _deleteMapping(e: SyntheticEvent<HTMLDivElement>) {
-    const _id = e.target.getAttribute("data-id");
-    this.props.deleteMapping(_id);
-  }
-
-  renderMappings = () => {
-    const { mappings } = this.props;
-    return (
-      <div>
-        {mappings &&
-          mappings.length > 0 &&
-          mappings.map((elm: MappingType, index) => {
-            const { type, subType, mapping, alias, _id } = elm;
-            return (
-              <div key={index}>
-                <p onClick={this._deleteMapping} data-id={_id}>
-                  Type: {type}
-                </p>
-                <p>SubType: {subType}</p>
-                <p>Mapping: {mapping}</p>
-                <p>Alias: {alias}</p>
-              </div>
-            );
-          })}
-      </div>
-    );
-  };
   _updateNewMappingName = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewMappingName(e.target.value);
   };
+
   _updateNewMappingAlias = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewMappingAlias(e.target.value);
   };
+
   _updateNewMappingType = (e: SyntheticInputEvent<HTMLInputElement>) => {
     this.props.updateNewMappingType(e.target.value);
   };
+
   renderNewMapping() {
     const {
       newMappingName,
@@ -98,7 +75,12 @@ export default class Mapping extends React.PureComponent<Props> {
     );
   }
   render() {
-    const { budgetTypes, updateNewMappingType } = this.props;
+    const {
+      budgetTypes,
+      updateNewMappingType,
+      mappings,
+      deleteMapping
+    } = this.props;
 
     return (
       <div>
@@ -108,7 +90,7 @@ export default class Mapping extends React.PureComponent<Props> {
           budgetTypes={budgetTypes}
           handleTypeClick={updateNewMappingType}
         />
-        {this.renderMappings()}
+        <MappingsTable mappings={mappings} deleteMapping={deleteMapping} />
       </div>
     );
   }

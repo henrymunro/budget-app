@@ -35,3 +35,9 @@ export function toCamelCase(str: string): string {
 
 export const findClosestId = e =>
   e.target.closest("[data-id]").getAttribute("data-id");
+
+export const removeIdFromList = (reducerState, listName, _id) =>
+  reducerState.set(
+    listName,
+    reducerState.get(listName).filterNot(type => type._id === _id)
+  );

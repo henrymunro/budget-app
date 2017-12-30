@@ -1,0 +1,23 @@
+/**
+ * Retrieves a color value from the $material-colors Sass map
+ * Inspired by https://github.com/nilskaspersson/Google-Material-UI-Color-Palette/
+ *
+ * @function
+ * @param {string} color-name             - quoted, lower-case, dasherized color
+ *                                          name (e.g. 'pink', 'amber')
+ * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
+ *                                          '200', 'a100')
+ */
+.Table {
+  width: 100%;
+}
+.Table > thead {
+  background: #00bcd4;
+  color: white;
+}
+.Table > tbody > tr:nth-child(even) {
+  background: #80deea;
+}
+.Table > tbody > tr:nth-child(odd) {
+  background: #b2ebf2;
+}
