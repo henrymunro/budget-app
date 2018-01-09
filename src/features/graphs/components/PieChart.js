@@ -23,7 +23,7 @@ export default class PieChart extends React.PureComponent<Props> {
         <RePieChart width={dimensions || 250} height={dimensions || 250}>
           <Pie
             data={mapData(data, nameKey, valueKey)}
-            dataKey={valueKey || "value"}
+            dataKey="value"
             innerRadius={40}
             outerRadius={80}
             fill="#82ca9d"
