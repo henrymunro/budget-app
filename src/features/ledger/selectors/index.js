@@ -19,6 +19,14 @@ export function getLedgerGroupedByMonth(state: State) {
   return ledger;
 }
 
+export function getLedgerGroupedByType(state: State) {
+  const ledger = getLedger(state).toJS();
+  if (ledger && ledger.length > 0) {
+    return groupBy.groupByType(ledger);
+  }
+  return ledger;
+}
+
 export function getLedgerCRUDState(state: State): WebApiCRUDState {
   return state.getIn(["ledger", "ledgerCRUDState"]);
 }

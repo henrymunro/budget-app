@@ -7,6 +7,7 @@ import { toJS } from "common/utils";
 import {
   getLedger,
   getLedgerGroupedByMonth,
+  getLedgerGroupedByType,
   getLedgerCRUDState
 } from "../selectors";
 
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
   return {
     ledger: getLedger(state),
     ledgerGroupedByMonth: getLedgerGroupedByMonth(state),
+    ledgerGroupedByType: getLedgerGroupedByType(state),
     ledgerCRUDState: getLedgerCRUDState(state)
   };
 };

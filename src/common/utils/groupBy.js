@@ -49,8 +49,21 @@ let DataGrouper = (function() {
     });
   };
 
-  group.groupByType = function(data) {
+  group._groupByType = function(data) {
     return _.map(group(data, "type"), function(item) {
+      return _.extend({}, item.key, {
+        amount: _calcuateTotalAmount(item.vals),
+        items: item.vals
+      });
+    });
+  };
+
+  group._groupByMonth = function(data) {
+    const dataWithMonths = data.map(elm => ({
+      ...elm,
+      month: moment(elm.date).format("YYYY-MM")
+    }));
+    return _.map(group(dataWithMonths, "month"), function(item) {
       return _.extend({}, item.key, {
         amount: _calcuateTotalAmount(item.vals),
         items: item.vals
@@ -67,7 +80,17 @@ let DataGrouper = (function() {
       return _.extend({}, item.key, {
         amount: _calcuateTotalAmount(item.vals),
         items: item.vals,
-        types: group.groupByType(item.vals)
+        types: group._groupByType(item.vals)
+      });
+    });
+  };
+
+  group.groupByType = function(data) {
+    return _.map(group(data, "type"), function(item) {
+      return _.extend({}, item.key, {
+        amount: _calcuateTotalAmount(item.vals),
+        items: item.vals,
+        months: group._groupByMonth(item.vals)
       });
     });
   };

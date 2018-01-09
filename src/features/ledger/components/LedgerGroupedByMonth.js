@@ -14,7 +14,7 @@ type Props = {
 export default class LedgerGroupedByMonth extends React.PureComponent<Props> {
   render() {
     const { groupedLedger } = this.props;
-    console.log("HERE: ", { groupedLedger });
+    // console.log("HERE: ", { groupedLedger });
     return (
       <div>
         {groupedLedger &&
