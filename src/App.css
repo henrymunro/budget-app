@@ -67,3 +67,11 @@ span {
   src: url(./common/assets/fonts/Muli/Muli-ExtraLight.ttf);
   font-weight: 300;
 }
+
+.App {
+  position: relative;
+}
+
+.App__body {
+  padding: 80px 40px 30px 40px;
+}

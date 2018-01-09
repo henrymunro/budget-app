@@ -1,6 +1,8 @@
 import axios from "axios";
 
-import config from "config.json";
+const config = {
+  serverURL: "http://localhost:4000"
+};
 
 export const URLs = {
   fileUpload: "/fileUpload",
