@@ -14,7 +14,7 @@
   flex-direction: column;
   min-width: 300px;
   max-width: 500px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .BudgetTypeList .BudgetTypesList__row {
   flex: 1;
@@ -25,20 +25,20 @@
   color: white;
 }
 .BudgetTypeList .BudgetTypesList__row:first-child {
-  border-radius: 5px 5px 0 0;
+  border-radius: 3px 3px 0 0;
 }
 .BudgetTypeList
   .BudgetTypesList__row:first-child
   .BudgetTypeList__subType:first-child {
-  border-radius: 0 5px 0 0;
+  border-radius: 0 3px 0 0;
 }
 .BudgetTypeList .BudgetTypesList__row:last-child {
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 3px 3px;
 }
 .BudgetTypeList
   .BudgetTypesList__row:last-child
   .BudgetTypeList__subType:last-child {
-  border-radius: 0 0 5px 0;
+  border-radius: 0 0 3px 0;
 }
 .BudgetTypeList .BudgetTypeList__type {
   flex: 1;
