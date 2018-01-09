@@ -46,11 +46,7 @@ export default class LineChart extends React.PureComponent<Props> {
           <Tooltip />
           {data.map((series, index) => {
             const mappedData = mapData(series[seriesKey], nameKey, valueKey);
-            console.log("HERE:SERIES: ", {
-              series,
-              mappedData,
-              name: series[seriesName]
-            });
+
             return (
               <Line
                 key={index}
