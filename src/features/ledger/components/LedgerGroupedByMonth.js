@@ -3,6 +3,7 @@
 import React from "react";
 
 import type { LedgerGroupedByMonthType } from "../models/LedgerContainer";
+import { PieChart } from "../../graphs";
 
 import "./LedgerGroupedByMonth.css";
 
@@ -30,6 +31,11 @@ export default class LedgerGroupedByMonth extends React.PureComponent<Props> {
                         <p>{`£${-1 * Math.round(amount)}  Count: ${
                           items.length
                         }`}</p>
+                        <PieChart
+                          nameKey="type"
+                          valueKey="amount"
+                          data={types}
+                        />
                       </div>
                       <div className="LedgerMonthGroup__types">
                         {types.map((type, typeIndex) => {
