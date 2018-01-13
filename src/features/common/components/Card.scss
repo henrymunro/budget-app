@@ -1,0 +1,23 @@
+@import "standard.scss";
+
+.Card {
+  background: $color-50;
+  border-radius: $borderRadiusLarge;
+}
+
+.Card__title {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  background: $color-500;
+  border-radius: $borderRadiusLarge $borderRadiusLarge 0 0;
+  padding: 10px;
+  box-sizing: border-box;
+  color: $text-light;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.Card__body {
+  padding: 20px;
+}

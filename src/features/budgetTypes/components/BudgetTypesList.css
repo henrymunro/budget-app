@@ -9,10 +9,9 @@
  *                                          '200', 'a100')
  */
 .BudgetTypeList {
-  box-shadow: 0 1px 3px 3px #e0f7fa;
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 200px;
   max-width: 500px;
   border-radius: 3px;
 }

@@ -10,7 +10,9 @@ import type {
 const fetchBudgetTypes = budgetTypeCRUDActions.fetchAction;
 
 export { getNestedBudgetTypes, getBudgetTypes, fetchBudgetTypes };
-export { default as BudgetTypeList } from "./components/BudgetTypesList";
+export {
+  default as BudgetTypesDropdown
+} from "./components/BudgetTypesDropdown";
 export { default as reducer } from "./reducers/budgetType";
 
 export type { BudgetTypeType, GroupedBudgetTypesType };

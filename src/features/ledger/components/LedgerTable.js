@@ -39,7 +39,11 @@ export default class LedgerTable extends React.PureComponent<Props> {
       ) => (
         <tr key={index} data-id={_id} onClick={this._deleteLedgerEntry}>
           <td>{moment(date).format("YYYY-MM-DD")}</td>
-          <td>{userDescription || mappingAlias || description}</td>
+          <td>
+            {(userDescription || mappingAlias || description)
+              .toLowerCase()
+              .replace(/\b\w/g, l => l.toUpperCase())}
+          </td>
           <td>{amount}</td>
           <td>{type && subType && `${type}, ${subType}`}</td>
         </tr>

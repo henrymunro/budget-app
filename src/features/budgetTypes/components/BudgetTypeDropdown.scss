@@ -1,0 +1,56 @@
+@import "standard.scss";
+
+.BudgetTypeDropdown {
+  position: relative;
+}
+
+.BudgetTypeDropdown__type {
+  padding: 5px 15px;
+  border: solid 1px $color-700;
+  min-height: 25px;
+  min-width: 200px;
+  background: #ffffff;
+  border-radius: $borderRadiusSmall;
+}
+
+.BudgetTypeDropdown__types {
+  @include standardTransition(max-height);
+  position: absolute;
+  overflow-y: scroll;
+  border: solid 1px $color-700;
+  border-radius: $borderRadiusSmall;
+  top: 38px;
+  left: 0;
+  right: 0;
+  width: 215px;
+  max-height: 0;
+  visibility: hidden;
+}
+
+.BudgetTypeDropdown__types--expanded {
+  animation-name: dropdownExpand;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.BudgetTypeDropdown__types--colapsed {
+  animation-name: dropdownExpand;
+  animation-duration: 0.3s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dropdownExpand {
+  0% {
+    max-height: 0;
+    visibility: hidden;
+  }
+  1% {
+    max-height: 0;
+    visibility: visible;
+  }
+  100% {
+    max-height: 250px;
+    visibility: visible;
+  }
+}

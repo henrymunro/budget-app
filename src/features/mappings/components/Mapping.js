@@ -7,6 +7,7 @@ import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
 import { BudgetTypeList } from "../../budgetTypes";
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import MappingsTable from "./MappingsTable";
+import NewMapping from "./NewMapping";
 
 import "./Mapping.css";
 
@@ -32,64 +33,35 @@ export default class Mapping extends React.PureComponent<Props> {
     this.props.fetchMappings();
   }
 
-  _updateNewMappingName = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.updateNewMappingName(e.target.value);
-  };
-
-  _updateNewMappingAlias = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.updateNewMappingAlias(e.target.value);
-  };
-
-  _updateNewMappingType = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.updateNewMappingType(e.target.value);
-  };
-
-  renderNewMapping() {
+  render() {
     const {
       newMappingName,
       newMappingAlias,
       newMappingType,
-      saveNewMapping,
-      fetchMappings
-    } = this.props;
-    return (
-      <div>
-        <input
-          type="text"
-          value={newMappingName || ""}
-          onChange={this._updateNewMappingName}
-        />
-        <input
-          type="text"
-          value={newMappingAlias || ""}
-          onChange={this._updateNewMappingAlias}
-        />
-        {!!newMappingType && (
-          <p>
-            Type: {newMappingType.type}, SubType: {newMappingType.subType}
-          </p>
-        )}
-        <button onClick={saveNewMapping}>Save</button>
-        <button onClick={fetchMappings}>Fetch</button>
-      </div>
-    );
-  }
-  render() {
-    const {
-      budgetTypes,
+      updateNewMappingName,
+      updateNewMappingAlias,
       updateNewMappingType,
+      saveNewMapping,
+      budgetTypes,
       mappings,
-      deleteMapping
+      deleteMapping,
+      fetchBudgetTypes
     } = this.props;
 
     return (
       <div>
-        {this.renderNewMapping()}
-        <p>Type: </p>
-        <BudgetTypeList
+        <NewMapping
+          name={newMappingName}
+          alias={newMappingAlias}
+          type={newMappingType}
+          updateNewMappingName={updateNewMappingName}
+          updateNewMappingAlias={updateNewMappingAlias}
+          updateNewMappingType={updateNewMappingType}
+          saveMapping={saveNewMapping}
           budgetTypes={budgetTypes}
-          handleTypeClick={updateNewMappingType}
+          fetchBudgetTypes={fetchBudgetTypes}
         />
+
         <MappingsTable mappings={mappings} deleteMapping={deleteMapping} />
       </div>
     );
