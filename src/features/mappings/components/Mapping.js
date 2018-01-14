@@ -46,14 +46,21 @@ export default class Mapping extends React.PureComponent<Props> {
       budgetTypes,
       mappings,
       deleteMapping,
-      fetchBudgetTypes
+      fetchBudgetTypes,
+      mappingCRUDState
     } = this.props;
 
     return (
       <div className="Mapping">
         <div>
           <Card title="Your mappings">
-            <MappingsTable mappings={mappings} deleteMapping={deleteMapping} />
+            <MappingsTable
+              mappings={mappings}
+              deleteMapping={deleteMapping}
+              loading={
+                mappingCRUDState.fetch.pending || mappingCRUDState.fetch.error
+              }
+            />
           </Card>
         </div>
         <div>

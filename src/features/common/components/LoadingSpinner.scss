@@ -1,0 +1,9 @@
+@import "standard.scss";
+
+.LoadingSpinner {
+  margin: 30px auto;
+
+  & > svg {
+    fill: $color-500;
+  }
+}

@@ -8199,6 +8199,10 @@ react-inspector@^2.2.2:
     babel-runtime "^6.26.0"
     is-dom "^1.0.9"
 
+react-loading@^1.0.3:
+  version "1.0.3"
+  resolved "https://jenkins.senecalearning.com:4873/react-loading/-/react-loading-1.0.3.tgz#48c2cc9a83916853e4c166dd2e4ee07884823b68"
+
 react-modal@^3.1.10:
   version "3.1.10"
   resolved "https://jenkins.senecalearning.com:4873/react-modal/-/react-modal-3.1.10.tgz#8898b5cc4ebba78adbb8dea4c55a69818aa682cc"

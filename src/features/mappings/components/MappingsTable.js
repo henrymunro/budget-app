@@ -4,10 +4,12 @@ import React from "react";
 import type { MappingType } from "../models/MappingContainer";
 import Table from "features/common/table/components/Table";
 import { findClosestId } from "common/utils";
+import LoadingSpinner from "features/common/components/LoadingSpinner";
 
 type Props = {
   mappings: Array<MappingType>,
-  deleteMapping?: string => void
+  deleteMapping?: string => void,
+  loading?: boolean
 };
 
 export default class MappingsTable extends React.PureComponent<Props> {
@@ -35,7 +37,7 @@ export default class MappingsTable extends React.PureComponent<Props> {
   };
 
   render() {
-    const { mappings } = this.props;
+    const { mappings, loading } = this.props;
     const thead = (
       <tr>
         <th>Name</th>
@@ -46,10 +48,14 @@ export default class MappingsTable extends React.PureComponent<Props> {
     );
     return (
       <div>
-        {mappings &&
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          mappings &&
           mappings.length > 0 && (
             <Table thead={thead}>{this.renderTableRows()}</Table>
-          )}
+          )
+        )}
       </div>
     );
   }
