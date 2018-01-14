@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Muli, sans-serif;
+  background: #e0f7fa;
 }
 
 input {
@@ -70,8 +71,6 @@ span {
 
 .App {
   position: relative;
-  background: #e0f7fa;
-  min-height: 100vh;
 }
 
 .App__body {
