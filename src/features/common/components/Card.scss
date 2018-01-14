@@ -1,8 +1,15 @@
 @import "standard.scss";
 
 .Card {
-  background: $color-50;
+  @include shadowLarge($color-50);
+  @include standardTransition;
+  background: $color-100;
   border-radius: $borderRadiusLarge;
+  margin: 20px 0;
+}
+
+.Card:hover {
+  @include shadowMed($color-50);
 }
 
 .Card__title {
