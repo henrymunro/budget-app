@@ -6,6 +6,7 @@ import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import { BudgetTypesDropdown } from "../../budgetTypes";
 import Card from "features/common/components/Card";
 import Input from "features/common/components/Input";
+import PrimaryButton from "features/common/buttons/components/PrimaryButton";
 
 import "./NewMapping.css";
 
@@ -37,6 +38,8 @@ export default class NewMapping extends React.PureComponent<Props> {
       updateNewMappingAlias,
       updateNewMappingType
     } = this.props;
+
+    const formComplete = name && alias && type && type.type;
     return (
       <Card title="Create new mapping">
         <div className="NewMapping">
@@ -56,7 +59,13 @@ export default class NewMapping extends React.PureComponent<Props> {
               handleTypeClick={updateNewMappingType}
             />
           </div>
-          <button onClick={saveMapping}>Save</button>
+          <div className="NewMapping__button">
+            <PrimaryButton
+              text="Save"
+              onClick={saveMapping}
+              disabled={!formComplete}
+            />
+          </div>
         </div>
       </Card>
     );

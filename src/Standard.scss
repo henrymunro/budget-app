@@ -21,6 +21,8 @@ $color-a200: material-color($base-color-scheme, "a200");
 $color-a400: material-color($base-color-scheme, "a400");
 $color-a700: material-color($base-color-scheme, "a700");
 
+$disabled: #9e9e9e;
+
 // Cards
 $borderRadiusSmall: 3px;
 $borderRadiusMed: 5px;
@@ -33,7 +35,7 @@ $borderRadiusLarge: 10px;
 }
 
 @mixin shadowMed ($color: $color-500) {
-  box-shadow: 0 0 3px 3px $color;
+  box-shadow: 0 1px 3px 3px $color;
 }
 
 @mixin shadowLarge ($color: $color-500) {

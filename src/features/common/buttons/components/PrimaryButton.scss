@@ -1,0 +1,24 @@
+@import "standard.scss";
+
+.PrimaryButton {
+  @include shadowMed($color-50);
+  @include standardTransition;
+  outline: none;
+  min-height: 30px;
+  min-width: 110px;
+  background: $color-a700;
+  border: none;
+  color: $text-light;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.PrimaryButton--disabled {
+  background: $disabled;
+  cursor: not-allowed;
+}
+
+.PrimaryButton:hover:not(.PrimaryButton--disabled),
+.PrimaryButton:focus:not(.PrimaryButton--disabled) {
+  @include shadowSmall($color-50);
+}

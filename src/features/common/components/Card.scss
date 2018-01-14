@@ -3,12 +3,12 @@
 .Card {
   @include shadowLarge($color-50);
   @include standardTransition;
-  background: $color-100;
+  // background: $color-100;
   border-radius: $borderRadiusLarge;
   margin: 20px 0;
 }
 
-.Card:hover {
+.Card--hoverable:hover {
   @include shadowMed($color-50);
 }
 
