@@ -32,5 +32,5 @@ export function getLedgerCRUDState(state: State): WebApiCRUDState {
 }
 
 export function getLedgerEdits(state: State) {
-  return getLedgerReducer(state).ledgerEdits;
+  return getLedgerReducer(state).ledgerEdits.toJS();
 }

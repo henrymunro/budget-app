@@ -35,8 +35,6 @@ const SuggestedMappings = ({
     return mappedRows;
   };
 
-  console.log("HERE: ", { mappingsLedgerUpdates });
-
   const thead = (
     <tr>
       <th>Name</th>

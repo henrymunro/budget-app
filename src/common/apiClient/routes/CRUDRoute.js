@@ -38,7 +38,8 @@ export default class APIRoutes {
     throw new Error("No id passed, could not update");
   }
 
-  multiupdates(updates) {
+  multiupdate(updates) {
+    console.log("HERE: ", { updates });
     return this.api.put(`${this.route}/multiple`, updates);
   }
 }

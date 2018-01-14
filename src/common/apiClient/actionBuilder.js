@@ -28,7 +28,7 @@ export default (route: string, actionTypes: Object, actionName?: string) => {
   });
 
   const multiupdateAction = updates => ({
-    type: actionTypes[`UPDATE_${actionTypeName}`],
+    type: actionTypes[`MULTIUPDATE_${actionTypeName}`],
     payload: apiRoutes.multiupdate(updates)
   });
 

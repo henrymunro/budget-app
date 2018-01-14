@@ -19,7 +19,8 @@ type Props = {
   updateNewMappingAlias: string => void,
   updateNewMappingType: string => void,
   fetchBudgetTypes: () => void,
-  applyMappingsToAllLedgerItems: () => void
+  applyMappingsToAllLedgerItems: () => void,
+  saveLedgerMappingsUpdates: () => void
 };
 
 export default class NewMapping extends React.PureComponent<Props> {
@@ -37,7 +38,8 @@ export default class NewMapping extends React.PureComponent<Props> {
       updateNewMappingName,
       updateNewMappingAlias,
       updateNewMappingType,
-      applyMappingsToAllLedgerItems
+      applyMappingsToAllLedgerItems,
+      saveLedgerMappingsUpdates
     } = this.props;
 
     const formComplete = name && alias && type && type.type;
@@ -70,6 +72,13 @@ export default class NewMapping extends React.PureComponent<Props> {
           <PrimaryButton
             text="Apply"
             onClick={applyMappingsToAllLedgerItems}
+            // disabled={!formComplete}
+          />
+        </div>
+        <div className="NewMapping__button">
+          <PrimaryButton
+            text="Save ledger"
+            onClick={saveLedgerMappingsUpdates}
             // disabled={!formComplete}
           />
         </div>

@@ -45,8 +45,7 @@ export function getSuggestedMappings(
 export function getMappingsLedgerUpdates(
   state: State
 ): Array<SuggestedMappingType> {
-  const ledgerEdits = getLedgerEdits(state).toJS();
-  console.log("HERE: ", { ledgerEdits });
+  const ledgerEdits = getLedgerEdits(state);
   const grouped = groupBy
     .groupLedgerByMapping(ledgerEdits)
     .sort((a, b) => b.count - a.count);

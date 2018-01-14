@@ -33,7 +33,8 @@ type Props = {
   fetchLedger: () => void,
   suggestedMappings: Array<SuggestedMappingType>,
   mappingsLedgerUpdates: Array<SuggestedMappingType>,
-  applyMappingsToAllLedgerItems: () => void
+  applyMappingsToAllLedgerItems: () => void,
+  saveLedgerMappingsUpdates: () => void
 };
 
 export default class Mapping extends React.PureComponent<Props> {
@@ -58,7 +59,8 @@ export default class Mapping extends React.PureComponent<Props> {
       mappingCRUDState,
       suggestedMappings,
       mappingsLedgerUpdates,
-      applyMappingsToAllLedgerItems
+      applyMappingsToAllLedgerItems,
+      saveLedgerMappingsUpdates
     } = this.props;
 
     return (
@@ -87,6 +89,7 @@ export default class Mapping extends React.PureComponent<Props> {
               budgetTypes={budgetTypes}
               fetchBudgetTypes={fetchBudgetTypes}
               applyMappingsToAllLedgerItems={applyMappingsToAllLedgerItems}
+              saveLedgerMappingsUpdates={saveLedgerMappingsUpdates}
             />
           </Card>
           <Card

@@ -26,7 +26,12 @@ import {
   fetchBudgetTypes
 } from "../../budgetTypes";
 
-import { fetchLedger, applyMappingsToAllLedgerItems } from "../../ledger";
+import {
+  fetchLedger,
+  applyMappingsToAllLedgerItems,
+  saveMultiLedgerUpdates,
+  getLedgerEdits
+} from "../../ledger";
 
 import Mapping from "../components/Mapping";
 
@@ -40,7 +45,8 @@ const mapStateToProps = state => {
     budgetTypes: getNestedBudgetTypes(state),
     nonNestedBudgetTypes: getBudgetTypes(state),
     suggestedMappings: getSuggestedMappings(state),
-    mappingsLedgerUpdates: getMappingsLedgerUpdates(state)
+    mappingsLedgerUpdates: getMappingsLedgerUpdates(state),
+    mappingsLedgerUpdatesToSave: getLedgerEdits(state)
   };
 };
 
@@ -57,7 +63,9 @@ const mapDispatchToProps = dispatch => {
     fetchBudgetTypes: () => dispatch(fetchBudgetTypes()),
     fetchLedger: () => dispatch(fetchLedger()),
     applyMappingsToAllLedgerItems: mappings =>
-      dispatch(applyMappingsToAllLedgerItems(mappings))
+      dispatch(applyMappingsToAllLedgerItems(mappings)),
+    saveLedgerMappingsUpdates: updates =>
+      dispatch(saveMultiLedgerUpdates(updates))
   };
 };
 
@@ -85,7 +93,11 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     },
     applyMappingsToAllLedgerItems: () => {
       dispatchProps.applyMappingsToAllLedgerItems(stateProps.mappings);
-    }
+    },
+    saveLedgerMappingsUpdates: () =>
+      dispatchProps.saveLedgerMappingsUpdates(
+        stateProps.mappingsLedgerUpdatesToSave
+      )
   };
 };
 

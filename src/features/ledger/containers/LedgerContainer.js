@@ -6,6 +6,7 @@ import { toJS } from "common/utils";
 
 import {
   getLedger,
+  getLedgerEdits,
   getLedgerGroupedByMonth,
   getLedgerGroupedByType,
   getLedgerCRUDState
@@ -18,6 +19,7 @@ import Ledger from "../components/Ledger";
 const mapStateToProps = state => {
   return {
     ledger: getLedger(state),
+    ledgerEdits: getLedgerEdits(state),
     ledgerGroupedByMonth: getLedgerGroupedByMonth(state),
     ledgerGroupedByType: getLedgerGroupedByType(state),
     ledgerCRUDState: getLedgerCRUDState(state)
@@ -31,8 +33,21 @@ const mapDispatchToProps = dispatch => {
       dispatch(ledgerCRUDActions.saveAction(ledgerEntry)),
     deleteLedgerEntry: _id => dispatch(ledgerCRUDActions.deleteAction(_id)),
     updateLedgerEntry: updates =>
-      dispatch(ledgerCRUDActions.updateAction(updates))
+      dispatch(ledgerCRUDActions.updateAction(updates)),
+    saveLedgerEdits: updates =>
+      dispatch(ledgerCRUDActions.multiupdateAction(updates))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(Ledger));
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    saveLedgerEdits: () => dispatchProps.saveLedgerEdits(stateProps.ledgerEdits)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
+  toJS(Ledger)
+);

@@ -35,10 +35,11 @@ export const applyMapping = (
       break;
     }
   }
-  const { alias, ...otherMappingDetails } = matchedMapping;
   return {
-    mappingAlias: alias,
-    ...otherMappingDetails
+    mappingAlias: matchedMapping.alias,
+    _typeId: matchedMapping._typeId,
+    type: matchedMapping.type,
+    subType: matchedMapping.subType
   };
 };
 
