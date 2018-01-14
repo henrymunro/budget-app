@@ -30,3 +30,7 @@ export function getLedgerGroupedByType(state: State) {
 export function getLedgerCRUDState(state: State): WebApiCRUDState {
   return state.getIn(["ledger", "ledgerCRUDState"]);
 }
+
+export function getLedgerEdits(state: State) {
+  return getLedgerReducer(state).ledgerEdits;
+}

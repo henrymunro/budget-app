@@ -95,6 +95,15 @@ let DataGrouper = (function() {
     });
   };
 
+  group.groupLedgerByMapping = function(data) {
+    return _.map(group(data, "description"), function(item) {
+      return _.extend({}, item.key, {
+        count: item.vals.length,
+        alias: item.vals[0].mappingAlias
+      });
+    });
+  };
+
   return group;
 })();
 

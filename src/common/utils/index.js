@@ -48,3 +48,9 @@ export const removeIdFromList = (reducerState, listName, _id) =>
 
 export const addNewItemToList = (reducerState, listName, object) =>
   reducerState.set(listName, reducerState.get(listName).push(object));
+
+export const stringMatch = (a?: string, b?: string) => {
+  if (!a && !b) return true;
+
+  return a === b;
+};

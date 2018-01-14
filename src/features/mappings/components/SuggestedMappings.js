@@ -7,28 +7,40 @@ import type { SuggestedMappingType } from "../models/MappingContainer";
 import { capitalise } from "common/utils";
 
 type Props = {
+  mappingsLedgerUpdates: Array<SuggestedMappingType>,
   suggestedMappings: Array<SuggestedMappingType>,
   loading?: boolean
 };
 
-const SuggestedMappings = ({ suggestedMappings, loading }: Props) => {
+const SuggestedMappings = ({
+  mappingsLedgerUpdates,
+  suggestedMappings,
+  loading
+}: Props) => {
+  // table will show updates to ledger if any are yet to be saved, if not it will show suggested mappings
+  const showMappingUpdates =
+    mappingsLedgerUpdates && mappingsLedgerUpdates.length > 0;
   const renderTableRows = () => {
-    const mappedRows = suggestedMappings
-      .splice(0, 5)
-      .map(({ description, count }, index) => (
-        <tr key={index}>
-          <td>{capitalise(description)}</td>
-          <td>{count}</td>
-        </tr>
-      ));
+    const data = showMappingUpdates
+      ? mappingsLedgerUpdates
+      : suggestedMappings.splice(0, 5);
+
+    const mappedRows = data.map(({ description, alias, count }, index) => (
+      <tr key={index}>
+        <td>{capitalise(description)}</td>
+        <td>{alias}</td>
+        <td>{count}</td>
+      </tr>
+    ));
     return mappedRows;
   };
 
-  console.log("HERE: ", { suggestedMappings, loading });
+  console.log("HERE: ", { mappingsLedgerUpdates });
 
   const thead = (
     <tr>
       <th>Name</th>
+      <th>Alias</th>
       <th>Count</th>
     </tr>
   );
@@ -37,10 +49,7 @@ const SuggestedMappings = ({ suggestedMappings, loading }: Props) => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        suggestedMappings &&
-        suggestedMappings.length > 0 && (
-          <Table thead={thead}>{renderTableRows()}</Table>
-        )
+        <Table thead={thead}>{renderTableRows()}</Table>
       )}
     </div>
   );

@@ -13,6 +13,7 @@ export type MappingType = {
 
 export type SuggestedMappingType = {
   description: string,
+  alias?: string,
   count: number
 };
 

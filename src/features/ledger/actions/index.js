@@ -10,7 +10,18 @@ const ledgerCRUDActionTypes = makeWebApiCRUDActionTypes(
 
 export const actionTypes = {
   // Web API
-  ...ledgerCRUDActionTypes
+  ...ledgerCRUDActionTypes,
+  APPLY_MAPPINGS_TO_ALL_LEDGER_ITEMS:
+    "budget/ledger/APPLY_MAPPINGS_TO_ALL_LEDGER_ITEMS"
+};
+
+export const applyMappingsToAllLedgerItems = mappings => {
+  return {
+    type: actionTypes.APPLY_MAPPINGS_TO_ALL_LEDGER_ITEMS,
+    payload: {
+      mappings
+    }
+  };
 };
 
 // Web API Interface

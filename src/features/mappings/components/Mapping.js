@@ -31,7 +31,9 @@ type Props = {
   updateMapping: ({ _id: string }) => void,
   fetchBudgetTypes: () => void,
   fetchLedger: () => void,
-  suggestedMappings: Array<SuggestedMappingType>
+  suggestedMappings: Array<SuggestedMappingType>,
+  mappingsLedgerUpdates: Array<SuggestedMappingType>,
+  applyMappingsToAllLedgerItems: () => void
 };
 
 export default class Mapping extends React.PureComponent<Props> {
@@ -54,7 +56,9 @@ export default class Mapping extends React.PureComponent<Props> {
       deleteMapping,
       fetchBudgetTypes,
       mappingCRUDState,
-      suggestedMappings
+      suggestedMappings,
+      mappingsLedgerUpdates,
+      applyMappingsToAllLedgerItems
     } = this.props;
 
     return (
@@ -82,10 +86,18 @@ export default class Mapping extends React.PureComponent<Props> {
               saveMapping={saveNewMapping}
               budgetTypes={budgetTypes}
               fetchBudgetTypes={fetchBudgetTypes}
+              applyMappingsToAllLedgerItems={applyMappingsToAllLedgerItems}
             />
           </Card>
-          <Card title="Suggested mappings">
+          <Card
+            title={
+              mappingsLedgerUpdates.length > 0
+                ? "UPDATES"
+                : "Suggested mappings"
+            }
+          >
             <SuggestedMappings
+              mappingsLedgerUpdates={mappingsLedgerUpdates}
               suggestedMappings={suggestedMappings}
               loading={
                 !suggestedMappings ||

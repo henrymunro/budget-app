@@ -3,7 +3,8 @@ import { Record, List } from "immutable";
 import type { LedgerType } from "../../../../backend/modules/database";
 
 export type LedgerContainerType = {
-  ledger: Array<LedgerType>
+  ledger: Array<LedgerType>,
+  ledgerEdits: Array<LedgerType>
 };
 
 export type LedgerGroupedByMonthType = {
@@ -18,5 +19,6 @@ export type LedgerGroupedByMonthType = {
 };
 
 export default class LedgerContainer extends Record({
-  ledger: List([])
+  ledger: List([]),
+  ledgerEdits: List([])
 })<LedgerContainerType> {}

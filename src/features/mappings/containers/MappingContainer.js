@@ -9,7 +9,8 @@ import {
   getNewMappingType,
   getMappings,
   getMappingCRUDState,
-  getSuggestedMappings
+  getSuggestedMappings,
+  getMappingsLedgerUpdates
 } from "../selectors";
 
 import {
@@ -25,7 +26,7 @@ import {
   fetchBudgetTypes
 } from "../../budgetTypes";
 
-import { fetchLedger } from "../../ledger";
+import { fetchLedger, applyMappingsToAllLedgerItems } from "../../ledger";
 
 import Mapping from "../components/Mapping";
 
@@ -38,7 +39,8 @@ const mapStateToProps = state => {
     mappingCRUDState: getMappingCRUDState(state),
     budgetTypes: getNestedBudgetTypes(state),
     nonNestedBudgetTypes: getBudgetTypes(state),
-    suggestedMappings: getSuggestedMappings(state)
+    suggestedMappings: getSuggestedMappings(state),
+    mappingsLedgerUpdates: getMappingsLedgerUpdates(state)
   };
 };
 
@@ -53,7 +55,9 @@ const mapDispatchToProps = dispatch => {
     updateMapping: updates =>
       dispatch(mappingCRUDActions.updateAction(updates)),
     fetchBudgetTypes: () => dispatch(fetchBudgetTypes()),
-    fetchLedger: () => dispatch(fetchLedger())
+    fetchLedger: () => dispatch(fetchLedger()),
+    applyMappingsToAllLedgerItems: mappings =>
+      dispatch(applyMappingsToAllLedgerItems(mappings))
   };
 };
 
@@ -78,6 +82,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
         .toJS()
         .filter(elm => elm._id === _id)[0];
       return dispatchProps.updateNewMappingType(type);
+    },
+    applyMappingsToAllLedgerItems: () => {
+      dispatchProps.applyMappingsToAllLedgerItems(stateProps.mappings);
     }
   };
 };

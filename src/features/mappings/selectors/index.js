@@ -5,7 +5,7 @@ import type { SuggestedMappingType } from "../models/MappingContainer";
 
 import groupBy from "common/utils/groupBy";
 import type { BudgetTypeType } from "../../budgetTypes";
-import { getLedger } from "../../ledger";
+import { getLedger, getLedgerEdits } from "../../ledger";
 
 export function getMappingReducer(state: State) {
   return state.getIn(["mapping", "mappingReducer"]);
@@ -38,6 +38,17 @@ export function getSuggestedMappings(
   const unmapped = ledger.filter(elm => !elm.mapingAlias);
   const grouped = groupBy
     .count(unmapped, "description")
+    .sort((a, b) => b.count - a.count);
+  return grouped;
+}
+
+export function getMappingsLedgerUpdates(
+  state: State
+): Array<SuggestedMappingType> {
+  const ledgerEdits = getLedgerEdits(state).toJS();
+  console.log("HERE: ", { ledgerEdits });
+  const grouped = groupBy
+    .groupLedgerByMapping(ledgerEdits)
     .sort((a, b) => b.count - a.count);
   return grouped;
 }
