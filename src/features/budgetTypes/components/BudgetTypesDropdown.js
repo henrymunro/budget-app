@@ -9,7 +9,7 @@ import type {
 } from "../models/BudgetTypeContainer";
 import BudgetTypesList from "./BudgetTypesList";
 
-import "./BudgetTypeDropdown.css";
+import "./BudgetTypesDropdown.css";
 
 type Props = {
   budgetType?: BudgetTypeType,
@@ -29,19 +29,18 @@ export default class BudgetTypesDropdown extends React.PureComponent<
     expanded: false
   };
 
-  componentWillMount() {
-    window.addEventListener("click", () => this._collapseList);
-  }
-
   componentWillUnmount() {
-    window.addEventListener("click", () => this._collapseList);
+    window.removeEventListener("click", this._collapseList);
   }
 
-  _expandedList = () => {
+  _expandedList = e => {
+    e.stopPropagation();
+    window.addEventListener("click", this._collapseList);
     this.setState({ expanded: true });
   };
 
   _collapseList = () => {
+    window.removeEventListener("click", this._collapseList);
     this.setState({ expanded: false });
   };
 
