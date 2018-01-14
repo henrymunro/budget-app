@@ -35,7 +35,7 @@ export function getSuggestedMappings(
   state: State
 ): Array<SuggestedMappingType> {
   const ledger = getLedger(state).toJS();
-  const unmapped = ledger.filter(elm => !elm.mapingAlias);
+  const unmapped = ledger.filter(elm => !elm.mappingAlias);
   const grouped = groupBy
     .count(unmapped, "description")
     .sort((a, b) => b.count - a.count);

@@ -94,10 +94,12 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     applyMappingsToAllLedgerItems: () => {
       dispatchProps.applyMappingsToAllLedgerItems(stateProps.mappings);
     },
-    saveLedgerMappingsUpdates: () =>
-      dispatchProps.saveLedgerMappingsUpdates(
+    saveLedgerMappingsUpdates: async () => {
+      await dispatchProps.saveLedgerMappingsUpdates(
         stateProps.mappingsLedgerUpdatesToSave
-      )
+      );
+      dispatchProps.fetchLedger();
+    }
   };
 };
 

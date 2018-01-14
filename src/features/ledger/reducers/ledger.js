@@ -13,11 +13,15 @@ const ledgerCRUDState = makeWebApiCRUDStateReducer("ledger", "budget/ledger/");
 const ledgerReducer = (ledger = new LedgerContainer(), action) => {
   switch (action.type) {
     case actionTypes.FETCH_LEDGER_FULFILLED:
-      return ledger.set("ledger", List(action.payload.data));
+      return ledger
+        .set("ledger", List(action.payload.data))
+        .set("ledgerEdits", List());
     case actionTypes.SAVE_LEDGER_FULFILLED:
       return addNewItemToList(ledger, "ledger", action.payload.data);
     case actionTypes.DELETE_LEDGER_FULFILLED:
       return removeIdFromList(ledger, "ledger", action.payload.data._id);
+    case actionTypes.MULTIUPDATE_LEDGER_FULFILLED:
+      return ledger.set("ledgerEdits", List());
     case actionTypes.APPLY_MAPPINGS_TO_ALL_LEDGER_ITEMS:
       return applyMappingsToAllLedgerItems(ledger, action);
 
