@@ -4,22 +4,13 @@
   position: relative;
 }
 
-.BudgetTypeDropdown__type {
-  padding: 5px 15px;
-  border: solid 1px $color-700;
-  min-height: 25px;
-  min-width: 200px;
-  background: #ffffff;
-  border-radius: $borderRadiusSmall;
-}
-
 .BudgetTypeDropdown__types {
   @include standardTransition(max-height);
   position: absolute;
   overflow-y: scroll;
   border: solid 1px $color-700;
   border-radius: $borderRadiusSmall;
-  top: 38px;
+  top: 25px;
   left: 0;
   right: 0;
   width: 215px;

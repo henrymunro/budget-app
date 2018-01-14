@@ -29,15 +29,15 @@ $borderRadiusLarge: 10px;
 // Shadows
 
 @mixin shadowSmall ($color: material-color($base-color-scheme, "500")) {
-  box-shadow: 0 0 1px 0px $color;
+  box-shadow: 0 0 1px 1px $color;
 }
 
 @mixin shadowMed ($color: $color-500) {
-  box-shadow: 0 1px 3px 3px $color;
+  box-shadow: 0 0 3px 3px $color;
 }
 
 @mixin shadowLarge ($color: $color-500) {
-  box-shadow: 0 2px 12px 6px $color;
+  box-shadow: 0 1px 12px 6px $color;
 }
 
 // Transitions

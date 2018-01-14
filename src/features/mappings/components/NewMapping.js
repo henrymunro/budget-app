@@ -5,6 +5,7 @@ import * as React from "react";
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import { BudgetTypesDropdown } from "../../budgetTypes";
 import Card from "features/common/components/Card";
+import Input from "features/common/components/Input";
 
 import "./NewMapping.css";
 
@@ -25,14 +26,6 @@ export default class NewMapping extends React.PureComponent<Props> {
     this.props.fetchBudgetTypes();
   }
 
-  _updateNewMappingName = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.updateNewMappingName(e.target.value);
-  };
-
-  _updateNewMappingAlias = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    this.props.updateNewMappingAlias(e.target.value);
-  };
-
   render() {
     const {
       name,
@@ -40,6 +33,8 @@ export default class NewMapping extends React.PureComponent<Props> {
       type,
       saveMapping,
       budgetTypes,
+      updateNewMappingName,
+      updateNewMappingAlias,
       updateNewMappingType
     } = this.props;
     return (
@@ -47,19 +42,11 @@ export default class NewMapping extends React.PureComponent<Props> {
         <div className="NewMapping">
           <div>
             <p>Mapping Name:</p>
-            <input
-              type="text"
-              value={name || ""}
-              onChange={this._updateNewMappingName}
-            />
+            <Input value={name} onChange={updateNewMappingName} />
           </div>
           <div>
             <p>Mapping Alias:</p>
-            <input
-              type="text"
-              value={alias || ""}
-              onChange={this._updateNewMappingAlias}
-            />
+            <Input value={alias} onChange={updateNewMappingAlias} />
           </div>
           <div>
             <p>Type: </p>

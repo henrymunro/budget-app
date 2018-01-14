@@ -1,0 +1,19 @@
+@import "standard.scss";
+
+.Input {
+  input {
+    border: 1px solid $color-700;
+    border-radius: $borderRadiusSmall;
+    background: #ffffff;
+    color: $text-dark;
+    outline: none;
+    min-height: 20px;
+    min-width: 150px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+  }
+
+  input:focus {
+    @include shadowSmall();
+  }
+}

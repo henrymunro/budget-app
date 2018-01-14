@@ -8,6 +8,7 @@ import type {
   GroupedBudgetTypesType
 } from "../models/BudgetTypeContainer";
 import BudgetTypesList from "./BudgetTypesList";
+import Input from "features/common/components/Input";
 
 import "./BudgetTypesDropdown.css";
 
@@ -58,16 +59,15 @@ export default class BudgetTypesDropdown extends React.PureComponent<
       "BudgetTypeDropdown__types--expanded": expanded,
       "BudgetTypeDropdown__types--collapsed": !expanded
     });
+
+    const typeText =
+      budgetType && budgetType.type
+        ? `${budgetType.type}, ${budgetType.subType}`
+        : "Please select a type";
     return (
       <div className="BudgetTypeDropdown">
-        <div className="BudgetTypeDropdown__type" onClick={this._expandedList}>
-          {budgetType && budgetType.type ? (
-            <div>
-              {budgetType.type}, {budgetType.subType}
-            </div>
-          ) : (
-            <div>Please select a type</div>
-          )}
+        <div onClick={this._expandedList}>
+          <Input value={typeText} />
         </div>
 
         <div className={dropdownClass}>
