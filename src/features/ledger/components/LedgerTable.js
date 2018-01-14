@@ -5,7 +5,7 @@ import moment from "moment";
 
 import type { LedgerType } from "../../../../backend/modules/database";
 import Table from "features/common/table/components/Table";
-import { findClosestId } from "common/utils";
+import { findClosestId, capitalise } from "common/utils";
 
 type Props = {
   ledger: Array<LedgerType>,
@@ -39,11 +39,7 @@ export default class LedgerTable extends React.PureComponent<Props> {
       ) => (
         <tr key={index} data-id={_id} onClick={this._deleteLedgerEntry}>
           <td>{moment(date).format("YYYY-MM-DD")}</td>
-          <td>
-            {(userDescription || mappingAlias || description)
-              .toLowerCase()
-              .replace(/\b\w/g, l => l.toUpperCase())}
-          </td>
+          <td>{capitalise(userDescription || mappingAlias || description)}</td>
           <td>{amount}</td>
           <td>{type && subType && `${type}, ${subType}`}</td>
         </tr>

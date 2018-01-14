@@ -112,7 +112,7 @@ DataGrouper.register("totalAmount", function(item) {
 });
 
 DataGrouper.register("count", function(item) {
-  return _.extend({}, item.key, { Count: item.vals.length });
+  return _.extend({}, item.key, { count: item.vals.length });
 });
 
 export default DataGrouper;

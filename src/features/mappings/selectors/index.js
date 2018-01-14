@@ -1,8 +1,11 @@
 // @flow
 import type { State } from "common/types";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
+import type { SuggestedMappingType } from "../models/MappingContainer";
 
+import groupBy from "common/utils/groupBy";
 import type { BudgetTypeType } from "../../budgetTypes";
+import { getLedger } from "../../ledger";
 
 export function getMappingReducer(state: State) {
   return state.getIn(["mapping", "mappingReducer"]);
@@ -26,4 +29,15 @@ export function getMappings(state: State): BudgetTypeType {
 
 export function getMappingCRUDState(state: State): WebApiCRUDState {
   return state.getIn(["mapping", "mappingCRUDState"]);
+}
+
+export function getSuggestedMappings(
+  state: State
+): Array<SuggestedMappingType> {
+  const ledger = getLedger(state).toJS();
+  const unmapped = ledger.filter(elm => !elm.mapingAlias);
+  const grouped = groupBy
+    .count(unmapped, "description")
+    .sort((a, b) => b.count - a.count);
+  return grouped;
 }

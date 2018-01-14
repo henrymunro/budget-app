@@ -11,6 +11,11 @@ export type MappingType = {
   subType: string
 };
 
+export type SuggestedMappingType = {
+  description: string,
+  count: number
+};
+
 export type MappingContainerType = {
   mappings: Array<MappingType>,
   newMappingName?: string,

@@ -2,12 +2,15 @@
 
 import * as React from "react";
 
-import type { MappingType } from "../models/MappingContainer";
+import type {
+  MappingType,
+  SuggestedMappingType
+} from "../models/MappingContainer";
 import WebApiCRUDState from "common/reducerUtils/models/WebApiCRUDState";
-import { BudgetTypeList } from "../../budgetTypes";
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import MappingsTable from "./MappingsTable";
 import NewMapping from "./NewMapping";
+import SuggestedMappings from "./SuggestedMappings";
 import Card from "features/common/components/Card";
 
 import "./Mapping.css";
@@ -26,12 +29,15 @@ type Props = {
   saveNewMapping: () => void,
   deleteMapping: string => void,
   updateMapping: ({ _id: string }) => void,
-  fetchBudgetTypes: () => void
+  fetchBudgetTypes: () => void,
+  fetchLedger: () => void,
+  suggestedMappings: Array<SuggestedMappingType>
 };
 
 export default class Mapping extends React.PureComponent<Props> {
   componentWillMount() {
     this.props.fetchMappings();
+    this.props.fetchLedger();
   }
 
   render() {
@@ -47,7 +53,8 @@ export default class Mapping extends React.PureComponent<Props> {
       mappings,
       deleteMapping,
       fetchBudgetTypes,
-      mappingCRUDState
+      mappingCRUDState,
+      suggestedMappings
     } = this.props;
 
     return (
@@ -75,6 +82,15 @@ export default class Mapping extends React.PureComponent<Props> {
               saveMapping={saveNewMapping}
               budgetTypes={budgetTypes}
               fetchBudgetTypes={fetchBudgetTypes}
+            />
+          </Card>
+          <Card title="Suggested mappings">
+            <SuggestedMappings
+              suggestedMappings={suggestedMappings}
+              loading={
+                !suggestedMappings ||
+                (suggestedMappings && suggestedMappings.length === 0)
+              }
             />
           </Card>
         </div>

@@ -8,7 +8,8 @@ import {
   getNewMappingAlias,
   getNewMappingType,
   getMappings,
-  getMappingCRUDState
+  getMappingCRUDState,
+  getSuggestedMappings
 } from "../selectors";
 
 import {
@@ -24,6 +25,8 @@ import {
   fetchBudgetTypes
 } from "../../budgetTypes";
 
+import { fetchLedger } from "../../ledger";
+
 import Mapping from "../components/Mapping";
 
 const mapStateToProps = state => {
@@ -34,7 +37,8 @@ const mapStateToProps = state => {
     mappings: getMappings(state),
     mappingCRUDState: getMappingCRUDState(state),
     budgetTypes: getNestedBudgetTypes(state),
-    nonNestedBudgetTypes: getBudgetTypes(state)
+    nonNestedBudgetTypes: getBudgetTypes(state),
+    suggestedMappings: getSuggestedMappings(state)
   };
 };
 
@@ -48,7 +52,8 @@ const mapDispatchToProps = dispatch => {
     deleteMapping: _id => dispatch(mappingCRUDActions.deleteAction(_id)),
     updateMapping: updates =>
       dispatch(mappingCRUDActions.updateAction(updates)),
-    fetchBudgetTypes: () => dispatch(fetchBudgetTypes())
+    fetchBudgetTypes: () => dispatch(fetchBudgetTypes()),
+    fetchLedger: () => dispatch(fetchLedger())
   };
 };
 

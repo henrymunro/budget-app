@@ -33,6 +33,10 @@ export function toCamelCase(str: string): string {
     .replace(/\s+/g, "");
 }
 
+export function capitalise(str: string): string {
+  return str.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+}
+
 export const findClosestId = e =>
   e.target.closest("[data-id]").getAttribute("data-id");
 
