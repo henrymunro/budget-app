@@ -27,10 +27,16 @@ export default (route: string, actionTypes: Object, actionName?: string) => {
     payload: apiRoutes.update(objectToUpdate)
   });
 
+  const multiupdateAction = updates => ({
+    type: actionTypes[`UPDATE_${actionTypeName}`],
+    payload: apiRoutes.multiupdate(updates)
+  });
+
   return {
     fetchAction,
     saveAction,
     deleteAction,
-    updateAction
+    updateAction,
+    multiupdateAction
   };
 };

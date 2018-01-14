@@ -38,6 +38,12 @@ export default class CRUDRouteCreator {
       });
 
     this.apiRoute
+      .route(`${this.route}/multiple`)
+      .put(function(req: request, res: response) {
+        return EDBI.updateEntries(req, res);
+      });
+
+    this.apiRoute
       .route(`${this.route}/:id`)
       .delete(function(req: request, res: response) {
         return EDBI.deleteEntry(req, res);

@@ -37,4 +37,8 @@ export default class APIRoutes {
     }
     throw new Error("No id passed, could not update");
   }
+
+  multiupdates(updates) {
+    return this.api.put(`${this.route}/multiple`, updates);
+  }
 }

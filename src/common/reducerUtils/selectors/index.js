@@ -15,3 +15,7 @@ export function getDeleteState(state): WebApiState {
 export function getUpdateState(state): WebApiState {
   return state.get("update");
 }
+
+export function getMultiupdateState(state): WebApiState {
+  return state.get("multiupdate");
+}

@@ -65,6 +65,21 @@ export default class ExpressDatabaseInterface {
     this._performDatabaseUpdate(req, res, req.body);
   }
 
+  async updateEntries(req: request, res: response) {
+    debug("Request recieved to update entries: ", req.originalUrl);
+    const promises = req.body.map(update => {
+      return this.Model.update({ _id: update._id }, update);
+    });
+    Promise.all(promises)
+      .then(output => {
+        return res.json(output);
+      })
+      .catch(err => {
+        debug("Error performing database update: ", err);
+        return this._sendError(res, err);
+      });
+  }
+
   // Perform general DB update
   async _performDatabaseUpdate(req: request, res: response, update: {}) {
     const _id = req.params.id;

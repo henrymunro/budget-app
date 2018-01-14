@@ -9,12 +9,18 @@ const makeWebApiCRUDStateReducer = (name: string, path: string = "budget/") => {
   const saveStateReducer = makeWebApiStateReducer(capsName, path, "SAVE");
   const deleteStateReducer = makeWebApiStateReducer(capsName, path, "DELETE");
   const updateStateReducer = makeWebApiStateReducer(capsName, path, "UPDATE");
+  const multiupdateStateReducer = makeWebApiStateReducer(
+    capsName,
+    path,
+    "MULTIUPDATE"
+  );
 
   return combineReducers({
     fetch: fetchStateReducer,
     save: saveStateReducer,
     delete: deleteStateReducer,
-    update: updateStateReducer
+    update: updateStateReducer,
+    mutiupdate: multiupdateStateReducer
   });
 };
 

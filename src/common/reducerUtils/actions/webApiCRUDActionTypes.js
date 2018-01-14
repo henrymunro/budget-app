@@ -17,11 +17,17 @@ export default (name: string, path: string = "budget/") => {
     path,
     "UPDATE"
   );
+  const multiupdateActionTypes = makeWebApiStateActionsTypes(
+    capsName,
+    path,
+    "MULTIUPDATE"
+  );
 
   return {
     ...fetchActionTypes,
     ...saveActionTypes,
     ...deleteActionTypes,
-    ...updateActionTypes
+    ...updateActionTypes,
+    ...multiupdateActionTypes
   };
 };

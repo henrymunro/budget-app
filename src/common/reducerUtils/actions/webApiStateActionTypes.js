@@ -8,7 +8,11 @@ export default (
   const capsName = name.toUpperCase();
   let callTypeCaps = callType.toUpperCase();
 
-  if (["FETCH", "SAVE", "DELETE", "UPDATE"].indexOf(callTypeCaps) <= 0)
+  if (
+    ["FETCH", "SAVE", "DELETE", "UPDATE", "MULTIUPDATE"].indexOf(
+      callTypeCaps
+    ) <= 0
+  )
     callTypeCaps = "FETCH";
 
   return {
