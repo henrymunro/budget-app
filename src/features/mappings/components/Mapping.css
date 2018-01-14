@@ -8,3 +8,10 @@
  * @param {string} [color-variant='500']  - quoted, lowercase color variant (e.g.
  *                                          '200', 'a100')
  */
+.Mapping {
+  display: flex;
+}
+.Mapping > div {
+  padding: 20px;
+  flex: 1;
+}

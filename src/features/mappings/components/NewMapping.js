@@ -4,7 +4,6 @@ import * as React from "react";
 
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import { BudgetTypesDropdown } from "../../budgetTypes";
-import Card from "features/common/components/Card";
 import Input from "features/common/components/Input";
 import PrimaryButton from "features/common/buttons/components/PrimaryButton";
 
@@ -41,33 +40,31 @@ export default class NewMapping extends React.PureComponent<Props> {
 
     const formComplete = name && alias && type && type.type;
     return (
-      <Card title="Create new mapping">
-        <div className="NewMapping">
-          <div>
-            <p>Mapping Name:</p>
-            <Input value={name} onChange={updateNewMappingName} />
-          </div>
-          <div>
-            <p>Mapping Alias:</p>
-            <Input value={alias} onChange={updateNewMappingAlias} />
-          </div>
-          <div>
-            <p>Type: </p>
-            <BudgetTypesDropdown
-              budgetType={type}
-              budgetTypes={budgetTypes}
-              handleTypeClick={updateNewMappingType}
-            />
-          </div>
-          <div className="NewMapping__button">
-            <PrimaryButton
-              text="Save"
-              onClick={saveMapping}
-              disabled={!formComplete}
-            />
-          </div>
+      <div className="NewMapping">
+        <div>
+          <p>Mapping Name:</p>
+          <Input value={name} onChange={updateNewMappingName} />
         </div>
-      </Card>
+        <div>
+          <p>Mapping Alias:</p>
+          <Input value={alias} onChange={updateNewMappingAlias} />
+        </div>
+        <div>
+          <p>Type: </p>
+          <BudgetTypesDropdown
+            budgetType={type}
+            budgetTypes={budgetTypes}
+            handleTypeClick={updateNewMappingType}
+          />
+        </div>
+        <div className="NewMapping__button">
+          <PrimaryButton
+            text="Save"
+            onClick={saveMapping}
+            disabled={!formComplete}
+          />
+        </div>
+      </div>
     );
   }
 }

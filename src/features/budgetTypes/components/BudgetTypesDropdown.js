@@ -50,7 +50,7 @@ export default class BudgetTypesDropdown extends React.PureComponent<
     this.props.handleTypeClick(_id);
   };
 
-  renderBudgetTypes = () => {
+  render() {
     const { budgetTypes, budgetType } = this.props;
     const { expanded } = this.state;
 
@@ -76,15 +76,6 @@ export default class BudgetTypesDropdown extends React.PureComponent<
             handleTypeClick={this._handleTypeClick}
           />
         </div>
-      </div>
-    );
-  };
-
-  render() {
-    const { budgetTypes } = this.props;
-    return (
-      <div>
-        {budgetTypes && budgetTypes.length > 0 && this.renderBudgetTypes()}
       </div>
     );
   }

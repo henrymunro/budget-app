@@ -8,6 +8,7 @@ import { BudgetTypeList } from "../../budgetTypes";
 import type { BudgetTypeType, GroupedBudgetTypesType } from "../../budgetTypes";
 import MappingsTable from "./MappingsTable";
 import NewMapping from "./NewMapping";
+import Card from "features/common/components/Card";
 
 import "./Mapping.css";
 
@@ -49,20 +50,27 @@ export default class Mapping extends React.PureComponent<Props> {
     } = this.props;
 
     return (
-      <div>
-        <NewMapping
-          name={newMappingName}
-          alias={newMappingAlias}
-          type={newMappingType}
-          updateNewMappingName={updateNewMappingName}
-          updateNewMappingAlias={updateNewMappingAlias}
-          updateNewMappingType={updateNewMappingType}
-          saveMapping={saveNewMapping}
-          budgetTypes={budgetTypes}
-          fetchBudgetTypes={fetchBudgetTypes}
-        />
-
-        <MappingsTable mappings={mappings} deleteMapping={deleteMapping} />
+      <div className="Mapping">
+        <div>
+          <Card title="Your mappings">
+            <MappingsTable mappings={mappings} deleteMapping={deleteMapping} />
+          </Card>
+        </div>
+        <div>
+          <Card title="Add new mapping">
+            <NewMapping
+              name={newMappingName}
+              alias={newMappingAlias}
+              type={newMappingType}
+              updateNewMappingName={updateNewMappingName}
+              updateNewMappingAlias={updateNewMappingAlias}
+              updateNewMappingType={updateNewMappingType}
+              saveMapping={saveNewMapping}
+              budgetTypes={budgetTypes}
+              fetchBudgetTypes={fetchBudgetTypes}
+            />
+          </Card>
+        </div>
       </div>
     );
   }

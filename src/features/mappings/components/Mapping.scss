@@ -1,1 +1,10 @@
 @import "standard.scss";
+
+.Mapping {
+  display: flex;
+
+  & > div {
+    padding: 20px;
+    flex: 1;
+  }
+}

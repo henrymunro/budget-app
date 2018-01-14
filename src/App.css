@@ -70,6 +70,8 @@ span {
 
 .App {
   position: relative;
+  background: #e0f7fa;
+  min-height: 100vh;
 }
 
 .App__body {
