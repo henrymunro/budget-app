@@ -42,8 +42,14 @@ const transfromFileForSaving = (
 ) => {
   const transformedFile = file.map(row => {
     const { date, description, paidIn, paidOut, ...other } = row;
-    const strippedPaidIn = Number(paidIn.replace("£", "")) || 0;
-    const strippedPaidOut = Number(paidOut.replace("£", "")) || 0;
+    const strippedPaidIn =
+      typeof paidIn === "string"
+        ? Number(paidIn.replace("£", "")) || 0
+        : paidIn;
+    const strippedPaidOut =
+      typeof paidOut === "string"
+        ? Number(paidOut.replace("£", "")) || 0
+        : paidOut;
     const { type, subType, _id } = applyMapping(String(description), mappings);
     return {
       date,
